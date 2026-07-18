@@ -77,8 +77,8 @@ main { width: min(1480px, calc(100% - 24px)); margin: 12px auto; overflow: hidde
 .main-nav { justify-self: center; display: flex; align-items: center; gap: clamp(24px, 4vw, 66px); color: #c9cec9; font-size: 14px; }
 .main-nav a { position: relative; transition: color .2s ease; }
 .main-nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -10px; height: 2px; background: var(--lime); transition: right .2s ease; }
-.main-nav a:hover { color: #fff; }
-.main-nav a:hover::after { right: 0; }
+.main-nav a:hover, .main-nav a[aria-current="page"] { color: #fff; }
+.main-nav a:hover::after, .main-nav a[aria-current="page"]::after { right: 0; }
 
 .header-actions { display: flex; align-items: center; justify-content: flex-end; height: 100%; }
 .header-actions input { width: 190px; height: 40px; background: #0d120f; color: #fff; border: 1px solid var(--line); padding: 0 12px; margin-right: 8px; }
@@ -89,20 +89,39 @@ main { width: min(1480px, calc(100% - 24px)); margin: 12px auto; overflow: hidde
 .icon-button svg { width: 21px; height: 21px; }
 .cart-button strong { min-width: 21px; height: 21px; display: grid; place-items: center; border-radius: 50%; background: var(--lime); color: #050705; font-size: 11px; }
 
-.catalog-hero { min-height: 142px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 34px; padding: 22px 48px 18px; border-bottom: 1px solid var(--line); position: relative; }
-.catalog-hero::before { content: ""; position: absolute; top: 0; right: 35%; width: 1px; height: 44px; background: var(--lime); opacity: .42; }
-.hero-copy { display: grid; grid-template-columns: minmax(430px, .9fr) minmax(270px, .55fr); gap: 32px; align-items: end; }
-.eyebrow { grid-column: 1 / -1; margin-bottom: -17px; color: var(--lime); font: 600 9px/1 var(--font-mono); letter-spacing: .18em; }
-.eyebrow i { display: inline-block; width: 44px; height: 2px; vertical-align: middle; margin-right: 12px; background: var(--lime); }
-.hero-copy h1 { margin: 0; font-family: var(--font-display); font-size: clamp(42px, 3.6vw, 56px); font-weight: 700; line-height: .88; letter-spacing: .01em; text-transform: uppercase; }
-.hero-copy h1 span { color: transparent; -webkit-text-stroke: 1px var(--lime); white-space: nowrap; }
-.hero-copy > p { margin: 0 0 3px; max-width: 390px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+.route-page { min-height: calc(100dvh - 187px); }
 
-.hero-status { display: grid; grid-template-columns: repeat(3, auto); border: 1px solid var(--line); min-width: 370px; }
-.hero-status div { display: flex; align-items: center; gap: 8px; padding: 13px 15px; border-left: 1px solid var(--line); }
-.hero-status div:first-child { border-left: 0; }
-.hero-status strong { color: var(--lime); font: 700 25px/1 var(--font-mono); }
-.hero-status span { color: #b8beb9; font-size: 9px; line-height: 1.25; text-transform: uppercase; letter-spacing: .06em; }
+.home-page { position: relative; overflow: hidden; background: radial-gradient(circle at 68% 48%, rgba(199,255,56,.075), transparent 30%), linear-gradient(135deg, rgba(13,18,15,.97), rgba(6,9,7,.99)); }
+.home-page::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(rgba(199,255,56,.028) 1px, transparent 1px), linear-gradient(90deg, rgba(199,255,56,.028) 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(to right, #000, transparent 74%); }
+.home-hero { min-height: 610px; display: grid; grid-template-columns: minmax(480px, .95fr) minmax(440px, 1.05fr); align-items: center; position: relative; z-index: 1; padding: 52px 58px 34px; }
+.home-copy { position: relative; z-index: 3; padding: 30px 0; }
+.eyebrow { margin: 0 0 25px; color: var(--lime); font: 600 9px/1 var(--font-mono); letter-spacing: .18em; }
+.eyebrow i { display: inline-block; width: 44px; height: 2px; vertical-align: middle; margin-right: 12px; background: var(--lime); }
+.home-copy h1 { max-width: 720px; margin: 0; font-family: var(--font-display); font-size: clamp(72px, 7vw, 112px); font-weight: 700; line-height: .82; letter-spacing: .01em; text-transform: uppercase; }
+.home-copy h1 span { display: block; color: transparent; -webkit-text-stroke: 1px var(--lime); }
+.home-copy > p { max-width: 590px; margin: 28px 0 30px; color: #a8b0aa; font-size: 14px; line-height: 1.7; }
+.home-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.primary-button, .secondary-button { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; padding: 0 24px; border: 1px solid var(--lime); font-size: 10px; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; transition: background .2s ease, color .2s ease; }
+.primary-button { background: var(--lime); color: #050705; }
+.primary-button:hover { background: var(--lime-soft); }
+.secondary-button { background: rgba(8,11,10,.55); color: var(--lime); }
+.secondary-button:hover { background: rgba(199,255,56,.08); }
+.home-visual { align-self: stretch; min-height: 550px; position: relative; display: grid; place-items: center; }
+.home-glow { position: absolute; width: 62%; aspect-ratio: 1; border-radius: 50%; background: rgba(199,255,56,.16); filter: blur(85px); }
+.home-visual > img { position: relative; z-index: 1; width: min(620px, 88%); height: 570px; object-fit: cover; object-position: center 42%; filter: drop-shadow(0 35px 35px rgba(0,0,0,.62)); }
+.featured-rig { position: absolute; z-index: 3; right: 0; top: 50%; display: grid; min-width: 150px; padding: 16px 18px; border-right: 2px solid var(--lime); background: rgba(7,10,8,.76); backdrop-filter: blur(7px); text-align: right; transform: translateY(-50%); }
+.featured-rig span { color: var(--lime); font: 700 7px/1 var(--font-mono); letter-spacing: .13em; }
+.featured-rig strong { margin-top: 8px; font-family: var(--font-display); font-size: 25px; letter-spacing: .05em; }
+.featured-rig small { color: #a2aca4; font: 600 10px/1 var(--font-mono); }
+.featured-rig a { justify-self: end; margin-top: 14px; color: #fff; font-size: 8px; font-weight: 800; text-transform: uppercase; }
+.featured-rig a b { margin-left: 5px; color: var(--lime); }
+.home-benefits { min-height: 100px; display: grid; grid-template-columns: repeat(3, 1fr); position: relative; z-index: 2; border-top: 1px solid var(--line); background: rgba(10,14,12,.96); }
+.home-benefits > div { display: flex; align-items: center; justify-content: center; gap: 20px; border-left: 1px solid var(--line); }
+.home-benefits > div:first-child { border-left: 0; }
+.home-benefits > div > strong { width: 43px; height: 43px; display: grid; place-items: center; border: 1px solid rgba(199,255,56,.42); border-radius: 50%; color: var(--lime); font: 700 22px/1 var(--font-mono); }
+.home-benefits span { display: grid; gap: 5px; }
+.home-benefits b { color: #e7ebe8; font-size: 12px; }
+.home-benefits small { color: #68716b; font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }
 
 .catalog { padding: 15px 48px 22px; }
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 10px; }
@@ -145,6 +164,67 @@ main { width: min(1480px, calc(100% - 24px)); margin: 12px auto; overflow: hidde
 .empty-search { min-height: 250px; display: grid; place-items: center; align-content: center; gap: 14px; border: 1px dashed var(--line); color: var(--muted); }
 .empty-search button { border: 1px solid var(--lime); padding: 10px 16px; background: transparent; color: var(--lime); cursor: pointer; }
 
+.configurator { padding: 42px 48px 46px; border-top: 1px solid var(--line); background: linear-gradient(135deg, rgba(16,21,18,.98), rgba(8,12,10,.98)); }
+.configurator-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 24px; }
+.configurator-heading > div > p { margin: 0 0 7px; color: var(--lime); font: 700 9px/1 var(--font-mono); letter-spacing: .14em; }
+.configurator-heading h2 { margin: 0; font-family: var(--font-display); font-size: clamp(38px, 4vw, 58px); line-height: .92; letter-spacing: .025em; text-transform: uppercase; }
+.configurator-heading > p { max-width: 420px; margin: 0 0 4px; color: #879189; font-size: 11px; line-height: 1.55; text-align: right; }
+.configurator-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(330px, .7fr); gap: 12px; align-items: start; }
+.configurator-form { display: grid; grid-template-columns: 1.15fr .85fr .9fr; gap: 10px; }
+.configurator-form fieldset { min-width: 0; display: flex; flex-direction: column; gap: 14px; margin: 0; padding: 22px; border: 1px solid var(--line); background: rgba(8,12,10,.76); }
+.configurator-form legend { padding: 0 9px; color: #e5e9e6; font-family: var(--font-display); font-size: 18px; letter-spacing: .04em; text-transform: uppercase; }
+.configurator-form legend span { color: var(--lime); margin-right: 8px; font-family: var(--font-mono); font-size: 9px; }
+.configurator-form label { display: grid; gap: 7px; }
+.configurator-form label > span { color: #808a82; font: 700 8px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.configurator-form select { width: 100%; min-width: 0; height: 48px; border: 1px solid #344037; border-radius: 0; background: #0c110e; color: #edf1ee; padding: 0 12px; font-size: 10px; font-weight: 650; cursor: pointer; }
+.configurator-form select:hover, .configurator-form select:focus { border-color: var(--lime); }
+.configurator-form option { background: #0c110e; color: #fff; }
+.configuration-summary { position: sticky; top: 86px; min-width: 0; border: 1px solid rgba(199,255,56,.32); background: #0b100d; padding: 26px; box-shadow: 0 20px 60px rgba(0,0,0,.24); }
+.configuration-summary::before { content: ""; position: absolute; left: -1px; top: -1px; width: 42px; height: 2px; background: var(--lime); }
+.configuration-summary > p:first-child { margin: 0 0 6px; color: var(--lime); font: 700 8px/1 var(--font-mono); letter-spacing: .14em; }
+.configuration-summary h3 { margin: 0 0 20px; font-family: var(--font-display); font-size: 38px; line-height: 1; letter-spacing: .035em; }
+.configuration-lines { border-top: 1px solid var(--line); }
+.configuration-lines > div { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.configuration-lines span { color: #626c64; font: 700 7px/1.25 var(--font-mono); }
+.configuration-lines strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #dce1dd; font-size: 9px; text-align: right; }
+.compatibility-status { margin-top: 14px; padding: 11px 12px; border: 1px solid var(--line); font-size: 8px; line-height: 1.45; }
+.compatibility-status strong { display: block; margin-bottom: 4px; font-size: 9px; text-transform: uppercase; letter-spacing: .06em; }
+.compatibility-status ul { margin: 5px 0 0; padding-left: 16px; }
+.compatibility-status.is-ok { border-color: rgba(199,255,56,.32); color: #aeb8b0; background: rgba(199,255,56,.035); }
+.compatibility-status.is-ok strong { color: var(--lime); }
+.compatibility-status.is-warning { border-color: rgba(255,185,56,.42); color: #bdb5a5; background: rgba(255,185,56,.04); }
+.compatibility-status.is-warning strong { color: #ffbd4a; }
+.configuration-total { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-top: 18px; }
+.configuration-total span { max-width: 110px; color: #727c74; font-size: 8px; line-height: 1.35; text-transform: uppercase; }
+.configuration-total strong { color: #fff; font: 800 28px/1 var(--font-mono); letter-spacing: -.06em; text-align: right; }
+.configuration-summary > button { width: 100%; height: 52px; display: flex; align-items: center; justify-content: center; gap: 9px; margin-top: 17px; border: 0; background: var(--lime); color: #060806; font-size: 9px; font-weight: 900; text-transform: uppercase; cursor: pointer; }
+.configuration-summary > button:hover { background: var(--lime-soft); }
+.configuration-summary > button:disabled { background: #313a33; color: #768078; cursor: not-allowed; }
+.configuration-summary > button svg { width: 16px; }
+.configuration-note { margin: 10px 0 0 !important; color: #59635b !important; font-size: 7px !important; line-height: 1.45 !important; letter-spacing: .04em !important; }
+
+.business-page, .support-page { display: grid; grid-template-columns: minmax(340px, .78fr) minmax(560px, 1.22fr); align-items: stretch; position: relative; background: linear-gradient(135deg, #101612, #080b09 70%); }
+.business-page::before, .support-page::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .45; background: linear-gradient(rgba(199,255,56,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(199,255,56,.025) 1px, transparent 1px); background-size: 30px 30px; }
+.page-intro { min-height: 590px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; position: relative; z-index: 1; padding: 58px; border-right: 1px solid var(--line); }
+.page-intro > p:first-child { margin: 0 0 20px; color: var(--lime); font: 700 9px/1 var(--font-mono); letter-spacing: .15em; }
+.page-intro h1 { margin: 0; font-family: var(--font-display); font-size: clamp(62px, 5.8vw, 92px); line-height: .86; text-transform: uppercase; }
+.page-intro h1 span { color: transparent; -webkit-text-stroke: 1px var(--lime); }
+.page-lead { max-width: 520px; margin: 26px 0 30px; color: #a2aca4; font-size: 13px; line-height: 1.7; }
+.service-grid, .faq-grid { position: relative; z-index: 1; display: grid; align-content: center; padding: 46px; gap: 12px; }
+.service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.service-grid article, .faq-grid article { min-width: 0; position: relative; overflow: hidden; border: 1px solid var(--line); background: rgba(11,15,13,.9); padding: 27px 23px; }
+.service-grid article::after, .faq-grid article::after { content: ""; position: absolute; width: 72px; height: 72px; right: -43px; bottom: -43px; border: 1px solid rgba(199,255,56,.3); transform: rotate(45deg); }
+.service-grid article > span, .faq-grid article > span { color: var(--lime); font: 700 8px/1 var(--font-mono); }
+.service-grid h2, .faq-grid h2 { margin: 24px 0 13px; font-family: var(--font-display); font-size: 26px; line-height: 1.05; letter-spacing: .035em; text-transform: uppercase; }
+.service-grid p, .faq-grid p { margin: 0; color: #808b82; font-size: 10px; line-height: 1.65; }
+.business-page .build-strip { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; }
+.support-page { grid-template-columns: minmax(390px, .9fr) minmax(520px, 1.1fr); }
+.support-contact { display: grid; gap: 8px; padding-left: 18px; border-left: 2px solid var(--lime); }
+.support-contact a { color: #fff; font: 700 18px/1.2 var(--font-mono); }
+.support-contact a:hover { color: var(--lime); }
+.support-contact span { color: #69736c; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+.faq-grid { grid-template-columns: 1fr 1fr; }
+
 .build-strip { min-height: 55px; display: flex; align-items: center; justify-content: space-around; gap: 16px; padding: 0 34px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: #a9b0ab; background: #0b0f0d; }
 .build-strip p { margin: 0; font: 600 9px/1 var(--font-mono); letter-spacing: .08em; white-space: nowrap; }
 .build-strip span { width: 4px; height: 4px; background: var(--lime); transform: rotate(45deg); }
@@ -156,9 +236,7 @@ footer a:hover { color: var(--lime); }
 .footer-brand { color: #fff; font-size: 12px; }
 .footer-brand .brand-mark { width: 24px; height: 31px; font-size: 18px; }
 
-body.product-detail-visible .catalog-hero,
-body.product-detail-visible .catalog,
-body.product-detail-visible .build-strip,
+body.product-detail-visible .route-page,
 body.product-detail-visible footer { display: none; }
 
 .product-detail-page { padding: 28px 48px 48px; }
@@ -235,6 +313,7 @@ body.product-detail-visible footer { display: none; }
 .cart-line > img { width: 76px; height: 92px; object-fit: cover; background: var(--panel); }
 .cart-line p { margin: 0 0 4px; color: var(--lime); font: 600 8px/1 var(--font-mono); }
 .cart-line h3 { margin: 0 0 8px; font-family: var(--font-display); letter-spacing: .04em; }
+.cart-line .custom-summary { display: block; max-width: 210px; margin: -3px 0 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #7b867e; font-size: 7px; }
 .cart-line > div > strong { font: 700 13px/1 var(--font-mono); }
 .quantity { display: grid; grid-template-columns: repeat(3, 28px); align-items: center; border: 1px solid var(--line); }
 .quantity button { height: 30px; border: 0; background: transparent; cursor: pointer; }
@@ -285,12 +364,13 @@ body.product-detail-visible footer { display: none; }
 .order-success > button { padding: 0 26px; }
 
 @media (max-width: 1120px) {
-  .main-nav { display: none; }
-  .site-header { grid-template-columns: 1fr auto; }
-  .catalog-hero { grid-template-columns: 1fr; gap: 24px; padding-top: 30px; }
-  .hero-copy { grid-template-columns: minmax(370px, 1fr) minmax(260px, .7fr); }
-  .hero-status { justify-self: stretch; }
-  .hero-status div { justify-content: center; }
+  .site-header { gap: 18px; padding-left: 22px; padding-right: 22px; }
+  .main-nav { gap: 23px; font-size: 12px; }
+  .home-hero { min-height: 560px; grid-template-columns: minmax(410px, .95fr) minmax(360px, 1.05fr); padding: 42px 34px 28px; }
+  .home-copy h1 { font-size: clamp(66px, 8vw, 90px); }
+  .home-visual { min-height: 500px; }
+  .home-visual > img { height: 510px; width: 100%; }
+  .featured-rig { right: -6px; }
   .product-card { height: 405px; grid-template-columns: 1fr; grid-template-rows: 145px 1fr; }
   .product-image { border-right: 0; border-bottom: 1px solid var(--line); }
   .product-image img { object-position: center 40%; }
@@ -299,24 +379,43 @@ body.product-detail-visible footer { display: none; }
   .detail-hero { grid-template-columns: minmax(300px, .85fr) minmax(410px, 1.15fr); }
   .detail-copy { padding: 34px; }
   .detail-content-grid { grid-template-columns: 1fr; }
+  .configurator-layout { grid-template-columns: 1fr; }
+  .configuration-summary { position: relative; top: auto; }
+  .business-page, .support-page { grid-template-columns: 1fr; }
+  .page-intro { min-height: 440px; padding: 48px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .service-grid { padding: 38px; }
+  .business-page .build-strip { position: relative; grid-column: 1; }
+  .faq-grid { padding: 38px; }
 }
 
 @media (max-width: 760px) {
   main { width: 100%; margin: 0; border-left: 0; border-right: 0; }
-  .site-header { height: 66px; padding: 0 16px; gap: 10px; position: sticky; top: 0; }
+  .site-header { height: auto; min-height: 110px; grid-template-columns: 1fr auto; align-content: center; padding: 9px 16px 0; gap: 7px 10px; position: sticky; top: 0; }
   .brand { font-size: 11px; gap: 9px; }
   .brand-mark { width: 27px; height: 34px; font-size: 20px; }
+  .main-nav { grid-column: 1 / -1; justify-self: stretch; width: calc(100% + 32px); min-width: 0; margin: 0 -16px; padding: 0 16px 11px; gap: 24px; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: none; font-size: 10px; }
+  .main-nav::-webkit-scrollbar { display: none; }
+  .main-nav a { flex: 0 0 auto; }
+  .main-nav a::after { bottom: -7px; }
+  .header-actions { grid-column: 2; grid-row: 1; }
   .icon-button { padding: 0 8px; border: 0; }
   .icon-button span { display: none; }
   .search-button { display: none; }
-  .catalog-hero { min-height: 0; padding: 38px 20px 28px; }
-  .hero-copy { grid-template-columns: 1fr; gap: 20px; }
-  .eyebrow { grid-column: auto; margin: 0; }
-  .hero-copy h1 { font-size: clamp(48px, 15vw, 70px); }
-  .hero-copy > p { font-size: 14px; }
-  .hero-status { min-width: 0; }
-  .hero-status div { flex-direction: column; align-items: flex-start; padding: 13px 11px; }
-  .hero-status strong { font-size: 24px; }
+  .route-page { min-height: calc(100dvh - 219px); }
+  .home-hero { min-height: 0; grid-template-columns: 1fr; padding: 42px 20px 8px; }
+  .home-copy { padding: 0; }
+  .eyebrow { margin-bottom: 20px; font-size: 8px; }
+  .home-copy h1 { font-size: clamp(54px, 18vw, 76px); }
+  .home-copy > p { margin: 21px 0 24px; font-size: 13px; line-height: 1.6; }
+  .home-buttons { display: grid; grid-template-columns: 1fr; }
+  .primary-button, .secondary-button { min-height: 49px; padding: 0 15px; }
+  .home-visual { min-height: 390px; margin-top: 8px; }
+  .home-visual > img { width: 100%; height: 405px; object-position: center 38%; }
+  .featured-rig { top: auto; right: 0; bottom: 24px; min-width: 132px; transform: none; }
+  .home-benefits { min-height: 0; grid-template-columns: 1fr; padding: 0 20px; }
+  .home-benefits > div { justify-content: flex-start; min-height: 78px; border-left: 0; border-top: 1px solid var(--line); }
+  .home-benefits > div:first-child { border-top: 0; }
+  .home-benefits > div > strong { width: 38px; height: 38px; font-size: 18px; }
   .catalog { padding: 26px 14px 30px; }
   .section-heading { align-items: start; }
   .catalog-note { display: none; }
@@ -343,6 +442,22 @@ body.product-detail-visible footer { display: none; }
   .benchmark-heading > span { display: none; }
   .benchmark-panel table { min-width: 520px; }
   .benchmark-panel th, .benchmark-panel td { padding: 12px 9px; }
+  .configurator { padding: 34px 14px 36px; }
+  .configurator-heading { align-items: start; flex-direction: column; gap: 14px; }
+  .configurator-heading h2 { font-size: 44px; }
+  .configurator-heading > p { max-width: none; font-size: 11px; text-align: left; }
+  .configurator-form { grid-template-columns: 1fr; }
+  .configurator-form fieldset { padding: 20px 16px; }
+  .configurator-form select { height: 51px; font-size: 12px; }
+  .configuration-summary { padding: 23px 17px; }
+  .configuration-lines strong { white-space: normal; }
+  .configuration-total strong { font-size: 25px; }
+  .page-intro { min-height: 480px; padding: 42px 20px; }
+  .page-intro h1 { font-size: clamp(52px, 17vw, 72px); }
+  .page-lead { font-size: 12px; }
+  .service-grid, .faq-grid { grid-template-columns: 1fr; padding: 14px; }
+  .service-grid article, .faq-grid article { padding: 24px 20px; }
+  .support-contact a { font-size: 14px; }
   .build-strip { justify-content: flex-start; overflow-x: auto; padding: 0 20px; }
   .build-strip p { margin-right: 18px; }
   footer { grid-template-columns: 1fr; gap: 16px; padding: 28px 20px; }
@@ -363,16 +478,16 @@ body.product-detail-visible footer { display: none; }
   <body>
     <main>
       <header class="site-header">
-        <a class="brand" href="#top" aria-label="NOVA RIG — domů">
+        <a class="brand" href="#home" aria-label="NOVA RIG — domů">
           <span class="brand-mark" aria-hidden="true">N</span>
           <span>NOVA RIG</span>
         </a>
 
         <nav class="main-nav" aria-label="Hlavní navigace">
-          <a href="#sestavy">Počítače</a>
-          <a href="#sestavy">Konfigurace</a>
-          <a href="#pro-firmy">Pro firmy</a>
-          <a href="#podpora">Podpora</a>
+          <a href="#pocitace" data-route="pocitace">Počítače</a>
+          <a href="#konfigurace" data-route="konfigurace">Konfigurace</a>
+          <a href="#firmy" data-route="firmy">Pro firmy</a>
+          <a href="#podpora" data-route="podpora">Podpora</a>
         </nav>
 
         <div class="header-actions" id="header-actions">
@@ -402,24 +517,41 @@ body.product-detail-visible footer { display: none; }
         </div>
       </header>
 
-      <section class="catalog-hero" id="top">
-        <div class="hero-copy">
-          <div class="eyebrow"><i></i> NOVÁ GENERACE VÝKONU</div>
-          <h1>PC, které drží krok <span>s tebou.</span></h1>
-          <p>
-            Devět ověřených sestav od Full HD po 4K. Všechny vidíš najednou —
-            bez nekonečného listování.
-          </p>
+      <section class="home-page route-page" id="home" data-page="home" aria-labelledby="home-title">
+        <div class="home-hero">
+          <div class="home-copy">
+            <div class="eyebrow"><i></i> NOVÁ GENERACE VÝKONU</div>
+            <h1 id="home-title">PC, které drží krok <span>s tebou.</span></h1>
+            <p>
+              Herní sestavy postavené a otestované v Česku. Připravené hrát od
+              prvního zapnutí — od dostupného Full HD až po nekompromisní 4K.
+            </p>
+            <div class="home-buttons">
+              <a class="primary-button" href="#pocitace">Vybrat sestavu</a>
+              <a class="secondary-button" href="#konfigurace">Vlastní konfigurace</a>
+            </div>
+          </div>
+
+          <div class="home-visual">
+            <div class="home-glow" aria-hidden="true"></div>
+            <img src="data:image/webp;base64,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" alt="Herní počítač NOVA RIG" width="700" height="875" />
+            <div class="featured-rig">
+              <span>DOPORUČUJEME</span>
+              <strong>NOVA T5</strong>
+              <small>od 86 990 Kč</small>
+              <a href="#pc=t5" aria-label="Zobrazit NOVA T5">Zobrazit <b aria-hidden="true">→</b></a>
+            </div>
+          </div>
         </div>
 
-        <div class="hero-status" aria-label="Výhody nákupu">
-          <div><strong>3</strong><span>roky<br />záruka</span></div>
-          <div><strong>48</strong><span>hodin<br />testování</span></div>
-          <div><strong>0</strong><span>Kč za<br />dopravu</span></div>
+        <div class="home-benefits" aria-label="Výhody nákupu">
+          <div><strong>✓</strong><span><b>3 roky záruka</b><small>Bez starostí</small></span></div>
+          <div><strong>◷</strong><span><b>Testováno 48 hodin</b><small>Stabilita v zátěži</small></span></div>
+          <div><strong>▰</strong><span><b>Doprava zdarma</b><small>Po celé ČR</small></span></div>
         </div>
       </section>
 
-      <section class="catalog" id="sestavy" aria-labelledby="catalog-title">
+      <section class="catalog route-page" id="pocitace" data-page="pocitace" hidden aria-labelledby="catalog-title">
         <div class="section-heading">
           <div>
             <p class="section-index">[ 01 / SESTAVY ]</p>
@@ -737,21 +869,119 @@ body.product-detail-visible footer { display: none; }
         <div id="product-detail-content"></div>
       </section>
 
-      <section class="build-strip" id="pro-firmy">
-        <p>POSTAVENO V ČESKU</p><span></span>
-        <p>BEZ BLOATWARU</p><span></span>
-        <p>TESTOVÁNO V ZÁTĚŽI</p><span></span>
-        <p>ČISTÝ CABLE MANAGEMENT</p>
+      <section class="configurator route-page" id="konfigurace" data-page="konfigurace" hidden aria-labelledby="configurator-title">
+        <div class="configurator-heading">
+          <div>
+            <p>[ 02 / VLASTNÍ SESTAVA ]</p>
+            <h2 id="configurator-title">Postav si NOVA CUSTOM</h2>
+          </div>
+          <p>Vyber komponenty. Kompatibilitu a doporučený zdroj hlídáme za tebe.</p>
+        </div>
+
+        <div class="configurator-layout">
+          <form class="configurator-form" id="configurator-form">
+            <fieldset>
+              <legend><span>01</span> Výkon</legend>
+              <label>
+                <span>Grafická karta</span>
+                <select id="config-gpu" name="gpu" aria-label="Grafická karta"><option>Načítám nabídku…</option></select>
+              </label>
+              <label>
+                <span>AMD procesor</span>
+                <select id="config-cpu" name="cpu" aria-label="AMD procesor"><option>Načítám nabídku…</option></select>
+              </label>
+              <label>
+                <span>Operační paměť</span>
+                <select id="config-ram" name="ram" aria-label="Operační paměť"><option>Načítám nabídku…</option></select>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend><span>02</span> Úložiště</legend>
+              <label>
+                <span>NVMe SSD</span>
+                <select id="config-ssd" name="ssd" aria-label="NVMe SSD"><option>Načítám nabídku…</option></select>
+              </label>
+              <label>
+                <span>Přídavný HDD</span>
+                <select id="config-hdd" name="hdd" aria-label="Přídavný HDD"><option>Načítám nabídku…</option></select>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend><span>03</span> Skříň a napájení</legend>
+              <label>
+                <span>Zdroj</span>
+                <select id="config-psu" name="psu" aria-label="Zdroj"><option>Načítám nabídku…</option></select>
+              </label>
+              <label>
+                <span>PC skříň</span>
+                <select id="config-case" name="case" aria-label="PC skříň"><option>Načítám nabídku…</option></select>
+              </label>
+            </fieldset>
+          </form>
+
+          <aside class="configuration-summary" aria-live="polite">
+            <p>[ TVOJE KONFIGURACE ]</p>
+            <h3>NOVA CUSTOM</h3>
+            <div class="configuration-lines" id="configuration-lines"></div>
+            <div class="compatibility-status" id="compatibility-status"></div>
+            <div class="configuration-total">
+              <span>Orientační cena včetně DPH</span>
+              <strong id="configuration-price">0 Kč</strong>
+            </div>
+            <button id="configuration-add" type="button">
+              Přidat konfiguraci do košíku
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"></path></svg>
+            </button>
+            <p class="configuration-note">Nezávazná konfigurace. Finální cenu a dostupnost komponent potvrdíme před objednávkou.</p>
+          </aside>
+        </div>
       </section>
 
-      <footer id="podpora">
-        <a class="brand footer-brand" href="#top">
+      <section class="business-page route-page" id="firmy" data-page="firmy" hidden aria-labelledby="business-title">
+        <div class="page-intro">
+          <p>[ PRO FIRMY ]</p>
+          <h1 id="business-title">Výkonné počítače<br /><span>bez starostí.</span></h1>
+          <p class="page-lead">Pracovní stanice a firemní PC navržené podle toho, co na nich opravdu děláte. Od jedné sestavy po vybavení celého týmu.</p>
+          <a class="primary-button" href="mailto:firmy@novarig.cz?subject=Firemní%20PC%20NOVA%20RIG">Nezávazně poptat</a>
+        </div>
+        <div class="service-grid">
+          <article><span>01</span><h2>Konfigurace na míru</h2><p>Vybereme procesor, grafiku, paměť i úložiště podle vašich programů a rozpočtu.</p></article>
+          <article><span>02</span><h2>Nasazení bez zdržení</h2><p>Počítače dodáme sestavené, otestované a připravené pro instalaci firemního softwaru.</p></article>
+          <article><span>03</span><h2>Jeden spolehlivý kontakt</h2><p>Pomůžeme s výběrem, rozšířením sestav i případným servisem po celou dobu záruky.</p></article>
+        </div>
+        <div class="build-strip">
+          <p>POSTAVENO V ČESKU</p><span></span><p>BEZ BLOATWARU</p><span></span><p>TESTOVÁNO V ZÁTĚŽI</p><span></span><p>ČISTÝ CABLE MANAGEMENT</p>
+        </div>
+      </section>
+
+      <section class="support-page route-page" id="podpora" data-page="podpora" hidden aria-labelledby="support-title">
+        <div class="page-intro support-intro">
+          <p>[ PODPORA ]</p>
+          <h1 id="support-title">Jsme tu,<br /><span>když nás potřebuješ.</span></h1>
+          <p class="page-lead">Poradíme s výběrem, objednávkou i servisem. Napiš nám a ozveme se co nejdřív.</p>
+          <div class="support-contact">
+            <a href="mailto:podpora@novarig.cz">podpora@novarig.cz</a>
+            <span>Po–Pá · 9:00–17:00</span>
+          </div>
+        </div>
+        <div class="faq-grid">
+          <article><span>01</span><h2>Jak dlouhá je záruka?</h2><p>Na každou sestavu NOVA RIG dostaneš tříletou záruku.</p></article>
+          <article><span>02</span><h2>Kdy PC odešlete?</h2><p>Skladové sestavy obvykle odesíláme do 24 hodin po potvrzení objednávky.</p></article>
+          <article><span>03</span><h2>Je PC připravené hrát?</h2><p>Ano. Systém i ovladače nastavíme a stabilitu sestavy otestujeme v zátěži.</p></article>
+          <article><span>04</span><h2>Mohu PC později rozšířit?</h2><p>Ano. Pomůžeme ti vybrat kompatibilní RAM, disk, grafiku nebo zdroj.</p></article>
+        </div>
+      </section>
+
+      <footer id="site-footer">
+        <a class="brand footer-brand" href="#home">
           <span class="brand-mark" aria-hidden="true">N</span>NOVA RIG
         </a>
         <p>Sestavy, které bychom si sami chtěli nechat.</p>
         <div>
           <a href="mailto:podpora@novarig.cz">podpora@novarig.cz</a>
-          <span>Po–Pá 9:00–17:00</span>
+          <a href="#podpora">Podpora</a>
         </div>
       </footer>
 
@@ -1115,6 +1345,94 @@ const productExtras = {
 
 for (const product of products) Object.assign(product, productExtras[product.id]);
 
+const configuratorOptions = {
+  gpus: [
+    { id: "rtx-3050-6", name: "GeForce RTX 3050 6GB", series: "RTX 30 · dle dostupnosti", price: 4990, psu: 550, size: 1, performance: 1, legacy: true },
+    { id: "rtx-3050-8", name: "GeForce RTX 3050 8GB", series: "RTX 30 · dle dostupnosti", price: 5790, psu: 550, size: 1, performance: 1, legacy: true },
+    { id: "rtx-3060", name: "GeForce RTX 3060 12GB", series: "RTX 30 · dle dostupnosti", price: 7490, psu: 650, size: 1, performance: 2, legacy: true },
+    { id: "rtx-3060-ti", name: "GeForce RTX 3060 Ti 8GB", series: "RTX 30 · dle dostupnosti", price: 8990, psu: 650, size: 2, performance: 2, legacy: true },
+    { id: "rtx-3070", name: "GeForce RTX 3070 8GB", series: "RTX 30 · dle dostupnosti", price: 10490, psu: 650, size: 2, performance: 3, legacy: true },
+    { id: "rtx-3070-ti", name: "GeForce RTX 3070 Ti 8GB", series: "RTX 30 · dle dostupnosti", price: 11990, psu: 750, size: 2, performance: 3, legacy: true },
+    { id: "rtx-3080-10", name: "GeForce RTX 3080 10GB", series: "RTX 30 · dle dostupnosti", price: 14490, psu: 750, size: 3, performance: 4, legacy: true },
+    { id: "rtx-3080-12", name: "GeForce RTX 3080 12GB", series: "RTX 30 · dle dostupnosti", price: 15490, psu: 850, size: 3, performance: 4, legacy: true },
+    { id: "rtx-3080-ti", name: "GeForce RTX 3080 Ti 12GB", series: "RTX 30 · dle dostupnosti", price: 17990, psu: 850, size: 3, performance: 4, legacy: true },
+    { id: "rtx-3090", name: "GeForce RTX 3090 24GB", series: "RTX 30 · dle dostupnosti", price: 23990, psu: 850, size: 3, performance: 5, legacy: true },
+    { id: "rtx-3090-ti", name: "GeForce RTX 3090 Ti 24GB", series: "RTX 30 · dle dostupnosti", price: 26990, psu: 1000, size: 3, performance: 5, legacy: true },
+    { id: "rtx-4060", name: "GeForce RTX 4060 8GB", series: "RTX 40", price: 7990, psu: 550, size: 1, performance: 2 },
+    { id: "rtx-4060-ti-8", name: "GeForce RTX 4060 Ti 8GB", series: "RTX 40", price: 10490, psu: 650, size: 2, performance: 3 },
+    { id: "rtx-4060-ti-16", name: "GeForce RTX 4060 Ti 16GB", series: "RTX 40", price: 12490, psu: 650, size: 2, performance: 3 },
+    { id: "rtx-4070", name: "GeForce RTX 4070 12GB", series: "RTX 40", price: 14490, psu: 650, size: 2, performance: 4 },
+    { id: "rtx-4070-super", name: "GeForce RTX 4070 SUPER 12GB", series: "RTX 40", price: 16490, psu: 750, size: 2, performance: 4 },
+    { id: "rtx-4070-ti", name: "GeForce RTX 4070 Ti 12GB", series: "RTX 40 · dle dostupnosti", price: 18990, psu: 750, size: 3, performance: 5, legacy: true },
+    { id: "rtx-4070-ti-super", name: "GeForce RTX 4070 Ti SUPER 16GB", series: "RTX 40", price: 21990, psu: 750, size: 3, performance: 5 },
+    { id: "rtx-4080", name: "GeForce RTX 4080 16GB", series: "RTX 40 · dle dostupnosti", price: 25990, psu: 850, size: 3, performance: 6, legacy: true },
+    { id: "rtx-4080-super", name: "GeForce RTX 4080 SUPER 16GB", series: "RTX 40", price: 27990, psu: 850, size: 3, performance: 6 },
+    { id: "rtx-4090", name: "GeForce RTX 4090 24GB", series: "RTX 40", price: 44990, psu: 1000, size: 3, performance: 7 },
+    { id: "rtx-5050", name: "GeForce RTX 5050 8GB", series: "RTX 50", price: 6990, psu: 550, size: 1, performance: 2 },
+    { id: "rtx-5060", name: "GeForce RTX 5060 8GB", series: "RTX 50", price: 8990, psu: 550, size: 1, performance: 3 },
+    { id: "rtx-5060-ti-8", name: "GeForce RTX 5060 Ti 8GB", series: "RTX 50", price: 11490, psu: 650, size: 2, performance: 3 },
+    { id: "rtx-5060-ti-16", name: "GeForce RTX 5060 Ti 16GB", series: "RTX 50", price: 13490, psu: 650, size: 2, performance: 4 },
+    { id: "rtx-5070", name: "GeForce RTX 5070 12GB", series: "RTX 50", price: 17990, psu: 650, size: 2, performance: 5 },
+    { id: "rtx-5070-ti", name: "GeForce RTX 5070 Ti 16GB", series: "RTX 50", price: 24990, psu: 750, size: 3, performance: 6 },
+    { id: "rtx-5080", name: "GeForce RTX 5080 16GB", series: "RTX 50", price: 33990, psu: 850, size: 3, performance: 7 },
+    { id: "rtx-5090", name: "GeForce RTX 5090 32GB", series: "RTX 50", price: 64990, psu: 1200, size: 3, performance: 9 },
+  ],
+  cpus: [
+    { id: "r5-5500", name: "AMD Ryzen 5 5500", socket: "AM4", memory: "DDR4", motherboard: "AMD A520M / B550M", cooling: "Věžový chladič 120 mm", price: 2290, performance: 1 },
+    { id: "r5-5600", name: "AMD Ryzen 5 5600", socket: "AM4", memory: "DDR4", motherboard: "AMD B550M", cooling: "Věžový chladič 120 mm", price: 2990, performance: 2 },
+    { id: "r7-5700x", name: "AMD Ryzen 7 5700X", socket: "AM4", memory: "DDR4", motherboard: "AMD B550M", cooling: "Výkonný věžový chladič", price: 4290, performance: 2 },
+    { id: "r7-5700x3d", name: "AMD Ryzen 7 5700X3D", socket: "AM4", memory: "DDR4", motherboard: "AMD B550M", cooling: "Výkonný věžový chladič", price: 5790, performance: 3 },
+    { id: "r5-7500f", name: "AMD Ryzen 5 7500F", socket: "AM5", memory: "DDR5", motherboard: "AMD B650M", cooling: "Věžový chladič 120 mm", price: 3990, performance: 3 },
+    { id: "r5-7600", name: "AMD Ryzen 5 7600", socket: "AM5", memory: "DDR5", motherboard: "AMD B650M", cooling: "Věžový chladič 120 mm", price: 4890, performance: 3 },
+    { id: "r7-7700", name: "AMD Ryzen 7 7700", socket: "AM5", memory: "DDR5", motherboard: "AMD B650M", cooling: "Výkonný věžový chladič", price: 6990, performance: 4 },
+    { id: "r7-7800x3d", name: "AMD Ryzen 7 7800X3D", socket: "AM5", memory: "DDR5", motherboard: "AMD B650", cooling: "AIO 240 mm", price: 10490, performance: 6 },
+    { id: "r9-7900x", name: "AMD Ryzen 9 7900X", socket: "AM5", memory: "DDR5", motherboard: "AMD B650 / X670", cooling: "AIO 240 mm", price: 9990, performance: 5 },
+    { id: "r9-7950x3d", name: "AMD Ryzen 9 7950X3D", socket: "AM5", memory: "DDR5", motherboard: "AMD X670", cooling: "AIO 360 mm", price: 15990, performance: 7 },
+    { id: "r5-9600x", name: "AMD Ryzen 5 9600X", socket: "AM5", memory: "DDR5", motherboard: "AMD B650 / B850", cooling: "Výkonný věžový chladič", price: 5990, performance: 4 },
+    { id: "r7-9700x", name: "AMD Ryzen 7 9700X", socket: "AM5", memory: "DDR5", motherboard: "AMD B650 / B850", cooling: "Výkonný věžový chladič", price: 8290, performance: 5 },
+    { id: "r7-9800x3d", name: "AMD Ryzen 7 9800X3D", socket: "AM5", memory: "DDR5", motherboard: "AMD B850 / X870", cooling: "AIO 240 mm", price: 12490, performance: 7 },
+    { id: "r9-9900x", name: "AMD Ryzen 9 9900X", socket: "AM5", memory: "DDR5", motherboard: "AMD B850 / X870", cooling: "AIO 240 mm", price: 11490, performance: 6 },
+    { id: "r9-9900x3d", name: "AMD Ryzen 9 9900X3D", socket: "AM5", memory: "DDR5", motherboard: "AMD X870", cooling: "AIO 360 mm", price: 15490, performance: 8 },
+    { id: "r9-9950x", name: "AMD Ryzen 9 9950X", socket: "AM5", memory: "DDR5", motherboard: "AMD X870", cooling: "AIO 360 mm", price: 15990, performance: 7 },
+    { id: "r7-9850x3d", name: "AMD Ryzen 7 9850X3D", socket: "AM5", memory: "DDR5", motherboard: "AMD X870", cooling: "AIO 360 mm", price: 14490, performance: 8 },
+    { id: "r9-9950x3d", name: "AMD Ryzen 9 9950X3D", socket: "AM5", memory: "DDR5", motherboard: "AMD X870", cooling: "AIO 360 mm", price: 18990, performance: 9 },
+  ],
+  ram: [
+    { id: "ram-8", capacity: 8, price: 790 },
+    { id: "ram-16", capacity: 16, price: 1390 },
+    { id: "ram-32", capacity: 32, price: 2490 },
+    { id: "ram-64", capacity: 64, price: 4790 },
+  ],
+  ssds: [
+    { id: "ssd-500", name: "500 GB NVMe SSD", price: 1090 },
+    { id: "ssd-1000", name: "1 TB NVMe SSD", price: 1690 },
+    { id: "ssd-2000", name: "2 TB NVMe SSD", price: 3190 },
+    { id: "ssd-4000", name: "4 TB NVMe SSD", price: 5990 },
+  ],
+  hdds: [
+    { id: "hdd-none", name: "Bez HDD", price: 0 },
+    { id: "hdd-1000", name: "1 TB HDD", price: 1190 },
+    { id: "hdd-2000", name: "2 TB HDD", price: 1690 },
+    { id: "hdd-4000", name: "4 TB HDD", price: 2490 },
+    { id: "hdd-8000", name: "8 TB HDD", price: 4290 },
+  ],
+  psus: [
+    { id: "psu-550", name: "550 W · 80+ Bronze", watts: 550, price: 1690 },
+    { id: "psu-650", name: "650 W · 80+ Gold", watts: 650, price: 2390 },
+    { id: "psu-750", name: "750 W · 80+ Gold · ATX 3.1", watts: 750, price: 2990 },
+    { id: "psu-850", name: "850 W · 80+ Gold · ATX 3.1", watts: 850, price: 3690 },
+    { id: "psu-1000", name: "1000 W · 80+ Gold · ATX 3.1", watts: 1000, price: 4990 },
+    { id: "psu-1200", name: "1200 W · 80+ Platinum · ATX 3.1", watts: 1200, price: 6990 },
+  ],
+  cases: [
+    { id: "case-mini", name: "NOVA Airflow Mini", price: 1690, maxSize: 1, description: "kompaktní mATX" },
+    { id: "case-airflow", name: "NOVA Airflow", price: 2190, maxSize: 2, description: "univerzální airflow" },
+    { id: "case-mesh", name: "NOVA Mesh Pro", price: 2890, maxSize: 3, description: "velká mesh skříň" },
+    { id: "case-vision", name: "NOVA Vision", price: 3890, maxSize: 3, description: "panoramatické sklo" },
+    { id: "case-titan", name: "NOVA Titan", price: 5190, maxSize: 3, description: "full tower" },
+  ],
+};
+
 const money = new Intl.NumberFormat("cs-CZ", {
   style: "currency",
   currency: "CZK",
@@ -1129,6 +1447,20 @@ const arrowIcon = `
 const productGrid = document.querySelector("#product-grid");
 const productDetailPage = document.querySelector("#product-detail-page");
 const productDetailContent = document.querySelector("#product-detail-content");
+const routePages = [...document.querySelectorAll(".route-page")];
+const routeLinks = [...document.querySelectorAll("[data-route]")];
+const configuratorForm = document.querySelector("#configurator-form");
+const configGpu = document.querySelector("#config-gpu");
+const configCpu = document.querySelector("#config-cpu");
+const configRam = document.querySelector("#config-ram");
+const configSsd = document.querySelector("#config-ssd");
+const configHdd = document.querySelector("#config-hdd");
+const configPsu = document.querySelector("#config-psu");
+const configCase = document.querySelector("#config-case");
+const configurationLines = document.querySelector("#configuration-lines");
+const compatibilityStatus = document.querySelector("#compatibility-status");
+const configurationPrice = document.querySelector("#configuration-price");
+const configurationAdd = document.querySelector("#configuration-add");
 const emptySearch = document.querySelector("#empty-search");
 const clearSearch = document.querySelector("#clear-search");
 const headerActions = document.querySelector("#header-actions");
@@ -1163,8 +1495,19 @@ function loadCart() {
     const parsed = JSON.parse(localStorage.getItem("nova-rig-cart") || "[]");
     if (!Array.isArray(parsed)) return [];
     return parsed
-      .filter((line) => products.some((product) => product.id === line.id))
-      .map((line) => ({ id: line.id, quantity: Math.max(1, Number(line.quantity) || 1) }));
+      .filter(
+        (line) =>
+          products.some((product) => product.id === line.id) ||
+          (typeof line.id === "string" &&
+            line.id.startsWith("custom-") &&
+            line.custom &&
+            Number.isFinite(Number(line.custom.price))),
+      )
+      .map((line) => ({
+        id: line.id,
+        quantity: Math.max(1, Number(line.quantity) || 1),
+        ...(line.custom ? { custom: line.custom } : {}),
+      }));
   } catch {
     return [];
   }
@@ -1185,7 +1528,8 @@ function getCartCount() {
 function getCartTotal() {
   return cart.reduce((sum, line) => {
     const product = products.find((item) => item.id === line.id);
-    return sum + (product ? product.price * line.quantity : 0);
+    const price = product ? product.price : Number(line.custom?.price) || 0;
+    return sum + price * line.quantity;
   }, 0);
 }
 
@@ -1278,7 +1622,7 @@ function renderProductDetail(product) {
 
   productDetailContent.innerHTML = `
     <div class="detail-topbar">
-      <a class="detail-back" href="#sestavy" aria-label="Zpět na všechny sestavy">
+      <a class="detail-back" href="#pocitace" aria-label="Zpět na všechny sestavy">
         <span aria-hidden="true">←</span> Zpět na sestavy
       </a>
       <p>${product.accent} / 09 · ${product.tier}</p>
@@ -1350,22 +1694,249 @@ function renderProductDetail(product) {
     </div>`;
 }
 
-function syncProductRoute() {
+const validRoutes = new Set(["home", "pocitace", "konfigurace", "firmy", "podpora"]);
+const routeTitles = {
+  home: "NOVA RIG — Prémiové herní počítače",
+  pocitace: "Herní počítače — NOVA RIG",
+  konfigurace: "Vlastní konfigurace — NOVA RIG",
+  firmy: "Počítače pro firmy — NOVA RIG",
+  podpora: "Podpora — NOVA RIG",
+};
+
+function currentRoute() {
+  const route = window.location.hash.slice(1);
+  return validRoutes.has(route) ? route : "home";
+}
+
+function syncRoute() {
   const match = window.location.hash.match(/^#pc=([a-z0-9]+)$/i);
   const product = match ? products.find((item) => item.id === match[1]) : null;
 
-  if (!product) {
-    productDetailPage.hidden = true;
-    document.body.classList.remove("product-detail-visible");
-    document.title = "NOVA RIG — Prémiové herní počítače";
+  if (product) {
+    routePages.forEach((page) => { page.hidden = true; });
+    routeLinks.forEach((link) => link.removeAttribute("aria-current"));
+    renderProductDetail(product);
+    productDetailPage.hidden = false;
+    document.body.classList.add("product-detail-visible");
+    document.title = `${product.name} — NOVA RIG`;
+    window.scrollTo(0, 0);
     return;
   }
 
-  renderProductDetail(product);
-  productDetailPage.hidden = false;
-  document.body.classList.add("product-detail-visible");
-  document.title = `${product.name} — NOVA RIG`;
+  const route = currentRoute();
+  routePages.forEach((page) => { page.hidden = page.dataset.page !== route; });
+  routeLinks.forEach((link) => {
+    if (link.dataset.route === route) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  });
+  productDetailPage.hidden = true;
+  document.body.classList.remove("product-detail-visible");
+  document.title = routeTitles[route];
   window.scrollTo(0, 0);
+}
+
+function findConfiguratorOption(group, id) {
+  return configuratorOptions[group].find((item) => item.id === id);
+}
+
+function standardOptions(items, label) {
+  return items
+    .map((item) => `<option value="${item.id}">${label(item)}</option>`)
+    .join("");
+}
+
+function gpuOptionGroups() {
+  const groups = [
+    ["RTX 30 · předchozí generace", "rtx-30"],
+    ["RTX 40", "rtx-40"],
+    ["RTX 50 · aktuální generace", "rtx-50"],
+  ];
+
+  return groups
+    .map(([label, prefix]) => {
+      const options = configuratorOptions.gpus.filter((gpu) => gpu.id.startsWith(prefix));
+      return `<optgroup label="${label}">${standardOptions(options, (gpu) => gpu.name)}</optgroup>`;
+    })
+    .join("");
+}
+
+function cpuOptionGroups() {
+  return ["AM4", "AM5"]
+    .map((socket) => {
+      const options = configuratorOptions.cpus.filter((cpu) => cpu.socket === socket);
+      return `<optgroup label="AMD ${socket}">${standardOptions(options, (cpu) => cpu.name)}</optgroup>`;
+    })
+    .join("");
+}
+
+function renderRamOptions(memoryType) {
+  const selected = configRam.value || "ram-32";
+  configRam.innerHTML = standardOptions(
+    configuratorOptions.ram,
+    (ram) => `${ram.capacity} GB ${memoryType}`,
+  );
+  configRam.value = findConfiguratorOption("ram", selected) ? selected : "ram-32";
+}
+
+function selectedConfiguration() {
+  return {
+    gpu: findConfiguratorOption("gpus", configGpu.value),
+    cpu: findConfiguratorOption("cpus", configCpu.value),
+    ram: findConfiguratorOption("ram", configRam.value),
+    ssd: findConfiguratorOption("ssds", configSsd.value),
+    hdd: findConfiguratorOption("hdds", configHdd.value),
+    psu: findConfiguratorOption("psus", configPsu.value),
+    caseItem: findConfiguratorOption("cases", configCase.value),
+  };
+}
+
+function configurationTotal(configuration) {
+  const platformAndAssembly = configuration.cpu.socket === "AM4" ? 6490 : 8490;
+  return (
+    platformAndAssembly +
+    configuration.gpu.price +
+    configuration.cpu.price +
+    configuration.ram.price +
+    configuration.ssd.price +
+    configuration.hdd.price +
+    configuration.psu.price +
+    configuration.caseItem.price
+  );
+}
+
+function compatibilityMessages(configuration) {
+  const issues = [];
+  let blocking = false;
+
+  if (configuration.psu.watts < configuration.gpu.psu) {
+    issues.push(`Pro ${configuration.gpu.name} je potřeba alespoň ${configuration.gpu.psu} W.`);
+    blocking = true;
+  }
+  if (configuration.caseItem.maxSize < configuration.gpu.size) {
+    issues.push(`${configuration.gpu.name} se nevejde do skříně ${configuration.caseItem.name}.`);
+    blocking = true;
+  }
+  if (configuration.ram.capacity === 8) {
+    issues.push("8 GB RAM je pro moderní hry minimum; doporučujeme alespoň 16 GB.");
+  } else if (configuration.ram.capacity < 32 && configuration.gpu.performance >= 5) {
+    issues.push("K této výkonné grafice doporučujeme 32 GB RAM.");
+  }
+  if (configuration.gpu.performance - configuration.cpu.performance >= 4) {
+    issues.push("Procesor může ve 1080p omezovat výkon vybrané grafické karty.");
+  }
+  if (configuration.gpu.legacy) {
+    issues.push("Tento model předchozí generace je dostupný pouze podle aktuálních skladových zásob.");
+  }
+
+  return { issues, blocking };
+}
+
+function renderConfiguration() {
+  const configuration = selectedConfiguration();
+  if (Object.values(configuration).some((item) => !item)) return;
+
+  const total = configurationTotal(configuration);
+  const ramName = `${configuration.ram.capacity} GB ${configuration.cpu.memory}`;
+  const lines = [
+    ["GPU", configuration.gpu.name],
+    ["CPU", configuration.cpu.name],
+    ["RAM", ramName],
+    ["SSD", configuration.ssd.name],
+    ["HDD", configuration.hdd.name],
+    ["DESKA", configuration.cpu.motherboard],
+    ["CHLAZENÍ", configuration.cpu.cooling],
+    ["ZDROJ", configuration.psu.name],
+    ["CASE", configuration.caseItem.name],
+  ];
+
+  configurationLines.innerHTML = lines
+    .map(([label, value]) => `<div><span>${label}</span><strong>${value}</strong></div>`)
+    .join("");
+  configurationPrice.textContent = money.format(total);
+
+  const compatibility = compatibilityMessages(configuration);
+  compatibilityStatus.className = `compatibility-status ${compatibility.issues.length ? "is-warning" : "is-ok"}`;
+  compatibilityStatus.innerHTML = compatibility.issues.length
+    ? `<strong>${compatibility.blocking ? "Uprav kompatibilitu" : "Doporučení"}</strong><ul>${compatibility.issues.map((issue) => `<li>${issue}</li>`).join("")}</ul>`
+    : "<strong>Kompatibilní sestava</strong>Vybrané komponenty k sobě výkonově i rozměrově pasují.";
+
+  configurationAdd.disabled = compatibility.blocking;
+  configurationAdd.setAttribute(
+    "aria-label",
+    compatibility.blocking ? "Nejdřív uprav nekompatibilní komponenty" : "Přidat vlastní konfiguraci do košíku",
+  );
+}
+
+function ensureGpuCompatibility() {
+  const gpu = findConfiguratorOption("gpus", configGpu.value);
+  const psu = findConfiguratorOption("psus", configPsu.value);
+  const caseItem = findConfiguratorOption("cases", configCase.value);
+  if (!gpu) return;
+
+  if (!psu || psu.watts < gpu.psu) {
+    const recommendedPsu = configuratorOptions.psus.find((item) => item.watts >= gpu.psu);
+    if (recommendedPsu) configPsu.value = recommendedPsu.id;
+  }
+  if (!caseItem || caseItem.maxSize < gpu.size) {
+    const recommendedCase = configuratorOptions.cases.find((item) => item.maxSize >= gpu.size);
+    if (recommendedCase) configCase.value = recommendedCase.id;
+  }
+}
+
+function populateConfigurator() {
+  configGpu.innerHTML = gpuOptionGroups();
+  configCpu.innerHTML = cpuOptionGroups();
+  configSsd.innerHTML = standardOptions(configuratorOptions.ssds, (ssd) => ssd.name);
+  configHdd.innerHTML = standardOptions(configuratorOptions.hdds, (hdd) => hdd.name);
+  configPsu.innerHTML = standardOptions(configuratorOptions.psus, (psu) => psu.name);
+  configCase.innerHTML = standardOptions(
+    configuratorOptions.cases,
+    (caseItem) => `${caseItem.name} · ${caseItem.description}`,
+  );
+
+  configGpu.value = "rtx-5060";
+  configCpu.value = "r5-7600";
+  configSsd.value = "ssd-1000";
+  configHdd.value = "hdd-none";
+  configPsu.value = "psu-650";
+  configCase.value = "case-airflow";
+  renderRamOptions("DDR5");
+  configRam.value = "ram-32";
+  renderConfiguration();
+}
+
+function addConfiguredBuild() {
+  const configuration = selectedConfiguration();
+  const compatibility = compatibilityMessages(configuration);
+  if (compatibility.blocking) return;
+
+  const total = configurationTotal(configuration);
+  const ramName = `${configuration.ram.capacity} GB ${configuration.cpu.memory}`;
+  cart.push({
+    id: `custom-${Date.now()}`,
+    quantity: 1,
+    custom: {
+      name: "NOVA CUSTOM",
+      tier: "VLASTNÍ KONFIGURACE",
+      price: total,
+      image: products.find((product) => product.id === "c2").image,
+      summary: `${configuration.gpu.name} · ${configuration.cpu.name} · ${ramName} · ${configuration.ssd.name}`,
+      configuration: {
+        gpu: configuration.gpu.name,
+        cpu: configuration.cpu.name,
+        ram: ramName,
+        ssd: configuration.ssd.name,
+        hdd: configuration.hdd.name,
+        motherboard: configuration.cpu.motherboard,
+        cooling: configuration.cpu.cooling,
+        psu: configuration.psu.name,
+        caseName: configuration.caseItem.name,
+      },
+    },
+  });
+  saveCart();
+  renderCart();
+  openCart();
 }
 
 function renderCart() {
@@ -1393,19 +1964,21 @@ function renderCart() {
   cartLines.innerHTML = cart
     .map((line) => {
       const product = products.find((item) => item.id === line.id);
-      if (!product) return "";
+      const item = product || line.custom;
+      if (!item) return "";
       return `
         <div class="cart-line">
-          <img src="${product.image}" alt="" width="76" height="92" />
+          <img src="${item.image}" alt="" width="76" height="92" />
           <div>
-            <p>${product.tier}</p>
-            <h3>${product.name}</h3>
-            <strong>${money.format(product.price)}</strong>
+            <p>${item.tier}</p>
+            <h3>${item.name}</h3>
+            ${line.custom ? `<span class="custom-summary">${item.summary}</span>` : ""}
+            <strong>${money.format(item.price)}</strong>
           </div>
-          <div class="quantity" aria-label="Počet ${product.name}">
-            <button type="button" data-quantity="-1" data-id="${product.id}" aria-label="Odebrat kus">−</button>
+          <div class="quantity" aria-label="Počet ${item.name}">
+            <button type="button" data-quantity="-1" data-id="${line.id}" aria-label="Odebrat kus">−</button>
             <span>${line.quantity}</span>
-            <button type="button" data-quantity="1" data-id="${product.id}" aria-label="Přidat kus">+</button>
+            <button type="button" data-quantity="1" data-id="${line.id}" aria-label="Přidat kus">+</button>
           </div>
         </div>`;
     })
@@ -1476,12 +2049,32 @@ productDetailContent.addEventListener("click", (event) => {
   if (button) addToCart(button.dataset.detailAdd);
 });
 
+configuratorForm.addEventListener("change", (event) => {
+  if (event.target === configCpu) {
+    const cpu = findConfiguratorOption("cpus", configCpu.value);
+    if (cpu) renderRamOptions(cpu.memory);
+  }
+  if (event.target === configGpu) ensureGpuCompatibility();
+  renderConfiguration();
+});
+
+configurationAdd.addEventListener("click", addConfiguredBuild);
+
 cartLines.addEventListener("click", (event) => {
   const button = event.target.closest("[data-quantity]");
   if (button) changeQuantity(button.dataset.id, Number(button.dataset.quantity));
 });
 
 searchButton.addEventListener("click", () => {
+  if (currentRoute() !== "pocitace") {
+    window.location.hash = "#pocitace";
+    searchOpen = true;
+    headerActions.classList.add("is-searching");
+    searchButton.setAttribute("aria-label", "Zavřít hledání");
+    searchLabel.textContent = "Zavřít";
+    requestAnimationFrame(() => searchInput.focus());
+    return;
+  }
   searchOpen = !searchOpen;
   headerActions.classList.toggle("is-searching", searchOpen);
   searchButton.setAttribute("aria-label", searchOpen ? "Zavřít hledání" : "Hledat");
@@ -1539,11 +2132,12 @@ document.addEventListener("keydown", (event) => {
   else if (cartDrawer.classList.contains("is-open")) closeCart();
 });
 
-window.addEventListener("hashchange", syncProductRoute);
+window.addEventListener("hashchange", syncRoute);
 
 renderProducts();
 renderCart();
-syncProductRoute();
+populateConfigurator();
+syncRoute();
 
     </script>
   </body>
