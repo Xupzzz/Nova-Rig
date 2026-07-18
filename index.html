@@ -222,8 +222,8 @@ main { width: min(1480px, calc(100% - 24px)); margin: 12px auto; overflow: hidde
 .radar-mark::before { inset: 6px; }.radar-mark::after { inset: 12px; }
 .radar-mark i { width: 16px; height: 1px; background: var(--lime); transform: rotate(-36deg); transform-origin: 100% 50%; }
 .tracker-state { display: flex; align-items: center; gap: 10px; }
-.demo-state { height: 34px; display: inline-flex; align-items: center; gap: 7px; padding: 0 11px; border: 1px solid rgba(255,190,77,.32); color: #d5b674; background: rgba(255,190,77,.04); font: 700 8px/1 var(--font-mono); letter-spacing: .08em; }
-.demo-state i { width: 6px; height: 6px; border-radius: 50%; background: #ffbd4a; box-shadow: 0 0 10px rgba(255,189,74,.7); }
+.demo-state { height: 34px; display: inline-flex; align-items: center; gap: 7px; padding: 0 11px; border: 1px solid rgba(199,255,56,.32); color: var(--lime); background: rgba(199,255,56,.04); font: 700 8px/1 var(--font-mono); letter-spacing: .08em; }
+.demo-state i { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 10px rgba(199,255,56,.7); }
 .demo-state.is-live { border-color: rgba(199,255,56,.34); color: var(--lime); }
 .demo-state.is-live i { background: var(--lime); box-shadow: 0 0 10px rgba(199,255,56,.7); }
 .tracker-state button { height: 34px; display: flex; align-items: center; gap: 6px; border: 1px solid #303d33; background: #0b120e; color: #d9dedb; padding: 0 12px; font-size: 8px; cursor: pointer; }
@@ -308,7 +308,7 @@ main { width: min(1480px, calc(100% - 24px)); margin: 12px auto; overflow: hidde
 .tracker-modal-visual.sprite-gpu { background-position: 0 0; }.tracker-modal-visual.sprite-cpu { background-position: 100% 0; }.tracker-modal-visual.sprite-ram { background-position: 0 100%; }.tracker-modal-visual.sprite-ssd { background-position: 100% 100%; }
 .tracker-modal-copy > p { margin: 0 0 7px; color: var(--lime); font: 700 8px/1 var(--font-mono); }.tracker-modal-copy h2 { margin: 0; font-family: var(--font-display); font-size: 38px; line-height: .95; text-transform: uppercase; }.tracker-modal-copy > span { display: block; margin-top: 9px; color: #7f8a82; font-size: 9px; }
 .tracker-modal-price { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-top: 24px; padding-top: 18px; border-top: 1px solid #2b372e; }.tracker-modal-price strong { color: var(--lime); font: 800 29px/1 var(--font-mono); }.tracker-modal-price span { color: #7a857d; font-size: 9px; }
-.tracker-sources { margin-top: 24px; }.tracker-sources > p { color: #68736b; font: 700 7px/1 var(--font-mono); letter-spacing: .12em; }.tracker-source-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 16px; padding: 12px 0; border-top: 1px solid #28342b; }.tracker-source-row strong { font-size: 10px; }.tracker-source-row span { color: #879189; font: 700 11px/1 var(--font-mono); }.tracker-source-row em { padding: 7px 9px; border: 1px solid rgba(255,190,77,.28); color: #c5a35f; font: 700 7px/1 var(--font-mono); font-style: normal; }
+.tracker-sources { margin-top: 24px; }.tracker-sources > p { color: #68736b; font: 700 7px/1 var(--font-mono); letter-spacing: .12em; }.tracker-source-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 16px; padding: 12px 0; border-top: 1px solid #28342b; }.tracker-source-row strong { font-size: 10px; }.tracker-source-row span { color: #879189; font: 700 11px/1 var(--font-mono); }.tracker-source-row a { padding: 7px 9px; border: 1px solid rgba(199,255,56,.28); color: var(--lime); font: 700 7px/1 var(--font-mono); text-decoration: none; text-transform: uppercase; }.tracker-source-row a:hover { background: rgba(199,255,56,.08); }
 
 .support-page { display: grid; grid-template-columns: minmax(390px, .9fr) minmax(520px, 1.1fr); align-items: stretch; position: relative; background: linear-gradient(135deg, #101612, #080b09 70%); }
 .support-page::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .45; background: linear-gradient(rgba(199,255,56,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(199,255,56,.025) 1px, transparent 1px); background-size: 30px 30px; }
@@ -1101,7 +1101,7 @@ body.product-detail-visible footer { display: none; }
               <div><strong>NOVA PRICE RADAR</strong><small data-i18n="priceIntelligence">PRICE INTELLIGENCE</small></div>
             </div>
             <div class="tracker-state">
-              <span class="demo-state" id="tracker-state"><i></i><b data-i18n="demoData">UKÁZKOVÁ DATA</b></span>
+              <span class="demo-state" id="tracker-state"><i></i><b data-i18n="demoData">OVĚŘENO 18. 7. 2026</b></span>
               <button id="tracker-refresh" type="button" aria-label="Obnovit data"><span aria-hidden="true">↻</span><b data-i18n="refresh">Obnovit</b></button>
             </div>
           </header>
@@ -1119,18 +1119,18 @@ body.product-detail-visible footer { display: none; }
               <div class="tracker-stats">
                 <div><span>◇</span><strong id="tracker-offer-count">24</strong><small data-i18n="offers">nabídek</small></div>
                 <div><span>▣</span><strong>6 + 2</strong><small data-i18n="shopsBazaar">obchodů + bazary</small></div>
-                <div><span>◷</span><strong id="tracker-updated">právě teď</strong><small data-i18n="lastRefresh">poslední obnovení</small></div>
+                <div><span>◷</span><strong id="tracker-updated">ověřeno 18. 7. 2026</strong><small data-i18n="lastRefresh">poslední obnovení</small></div>
               </div>
             </section>
 
             <section class="market-chart-card" aria-labelledby="chart-title">
               <div class="chart-card-head">
                 <div><p data-i18n="marketNow">TRH PRÁVĚ TEĎ</p><h2 id="chart-title">GeForce RTX 5070</h2></div>
-                <span><i></i><b data-i18n="demo">DEMO</b></span>
+                <span><i></i><b data-i18n="demo">OVĚŘENO</b></span>
               </div>
               <div class="chart-price-row">
-                <div><small>MSRP</small><s id="chart-msrp">18 990 Kč</s></div>
-                <div><small data-i18n="bestPrice">NEJLEPŠÍ CENA</small><strong id="chart-price">16 490 Kč</strong></div>
+                <div><small data-i18n="referencePrice">REFERENČNÍ CENA</small><s id="chart-msrp">18 990 Kč</s></div>
+                <div><small data-i18n="bestPrice">NEJLEPŠÍ CENA</small><strong id="chart-price">14 620 Kč</strong></div>
               </div>
               <div class="price-chart">
                 <svg viewBox="0 0 520 190" role="img" aria-label="Vývoj ceny za posledních 30 dní">
@@ -1141,7 +1141,7 @@ body.product-detail-visible footer { display: none; }
                   <circle id="tracker-chart-dot" cx="520" cy="34" r="5"></circle>
                 </svg>
               </div>
-              <div class="chart-legend"><span><i></i>MSRP</span><strong id="chart-discount">−13 %</strong><small data-i18n="thirtyDays">30 DNÍ</small></div>
+              <div class="chart-legend"><span><i></i><b data-i18n="referencePrice">REFERENČNÍ CENA</b></span><strong id="chart-discount">−23 %</strong><small data-i18n="thirtyDays">AKTUÁLNÍ NABÍDKY</small></div>
             </section>
           </div>
 
@@ -1163,7 +1163,7 @@ body.product-detail-visible footer { display: none; }
 
           <aside class="tracker-data-note">
             <span aria-hidden="true">i</span>
-            <div><strong data-i18n="whyDemo">Proč jsou nyní ceny ukázkové?</strong><p data-i18n="demoExplanation">GitHub Pages je statický web. Skutečné živé ceny vyžadují bezpečné cenové API; tracker je na jeho připojení připravený a nikdy nevydává ukázkovou cenu za živou.</p></div>
+            <div><strong data-i18n="whyDemo">Jak číst tyto ceny?</strong><p data-i18n="demoExplanation">Ceny jsou tržní snapshot ověřený 18. 7. 2026 na Heureka.cz a Bazoš.cz. Nejde o automatický živý přenos; obchody a bazary mohou ceny kdykoliv změnit. Pro skutečné live sledování je potřeba cenové API.</p></div>
           </aside>
         </div>
       </section>
@@ -1662,15 +1662,15 @@ const translations = {
     chooseBuild: "Vybrat sestavu", customConfig: "Vlastní konfigurace", recommended: "DOPORUČUJEME", show: "Zobrazit",
     warranty: "3 roky záruka", noWorries: "Bez starostí", tested: "Testováno 48 hodin", stable: "Stabilita v zátěži", freeShipping: "Doprava zdarma", wholeCz: "Po celé ČR",
     buildsIndex: "[ 01 / SESTAVY ]", catalogTitle: "Vyber si svůj rig", noBuilds: "Žádná sestava neodpovídá hledání.", showAll: "Zobrazit všechny",
-    priceIntelligence: "CENOVÁ INTELIGENCE", demoData: "UKÁZKOVÁ DATA", refresh: "Obnovit", marketRadar: "TRŽNÍ RADAR HARDWARU",
+    priceIntelligence: "CENOVÁ INTELIGENCE", demoData: "OVĚŘENO 18. 7. 2026", refresh: "Obnovit", marketRadar: "TRŽNÍ RADAR HARDWARU",
     trackerTitle: "Najdi nejvýhodnější hardware", trackerLead: "Porovnáváme nabídky obchodů i bazarů s doporučenou cenou, abys hned poznal, co se opravdu vyplatí.",
-    exploreOffers: "Prozkoumat nabídky", trackerSearch: "Hledat GPU, CPU, RAM nebo SSD…", offers: "nabídek", shopsBazaar: "obchodů + bazary", lastRefresh: "poslední obnovení",
-    marketNow: "TRH PRÁVĚ TEĎ", demo: "DEMO", bestPrice: "NEJLEPŠÍ CENA", thirtyDays: "30 DNÍ", source: "Zdroj", allOffers: "Všechny nabídky", eshops: "E-shopy", bazaars: "Bazary",
+    exploreOffers: "Prozkoumat nabídky", trackerSearch: "Hledat GPU, CPU, RAM nebo SSD…", offers: "nabídek", shopsBazaar: "obchodů + bazary", lastRefresh: "ověření cen",
+    marketNow: "TRH PRÁVĚ TEĎ", demo: "OVĚŘENO", bestPrice: "NEJLEPŠÍ CENA", thirtyDays: "AKTUÁLNÍ NABÍDKY", source: "Zdroj", allOffers: "Všechny nabídky", eshops: "E-shopy", bazaars: "Bazary",
     sort: "Řazení", bestDeal: "Nejlepší nabídka", lowestPrice: "Nejnižší cena", largestDiscount: "Největší sleva", noOffers: "Žádné nabídky neodpovídají filtru.",
-    whyDemo: "Proč jsou nyní ceny ukázkové?", demoExplanation: "GitHub Pages je statický web. Skutečné živé ceny vyžadují bezpečné cenové API; tracker je na jeho připojení připravený a nikdy nevydává ukázkovou cenu za živou.",
-    justNow: "právě teď", shop: "E-shop", bazaar: "Bazar", newCondition: "Nové", usedCondition: "Použité", detailOffer: "Detail nabídky", inStock: "Skladem", addCart: "Do košíku",
+    whyDemo: "Jak číst tyto ceny?", demoExplanation: "Ceny jsou tržní snapshot ověřený 18. 7. 2026 na Heureka.cz a Bazoš.cz. Nejde o automatický živý přenos; obchody a bazary mohou ceny kdykoliv změnit. Pro skutečné live sledování je potřeba cenové API.",
+    justNow: "ověřeno 18. 7. 2026", shop: "E-shop", bazaar: "Bazar", newCondition: "Nové", usedCondition: "Použité", detailOffer: "Detail nabídky", inStock: "Skladem", addCart: "Do košíku",
     backBuilds: "Zpět na sestavy", completeSpecs: "Kompletní parametry", gamePerformance: "Orientační benchmarky", averageFps: "PRŮMĚRNÁ FPS", idealFor: "IDEÁLNÍ PRO",
-    exampleSources: "UKÁZKOVÉ ZDROJE", exampleSource: "Ukázkový zdroj", priceVsMsrp: "proti MSRP", fromWord: "od", liveData: "ŽIVÁ DATA",
+    exampleSources: "OVĚŘENÉ NABÍDKY", exampleSource: "Další nabídka", priceVsMsrp: "proti referenční ceně", referencePrice: "REFERENČNÍ CENA", openSource: "Otevřít zdroj", fromWord: "od", liveData: "ŽIVÁ DATA",
     configIndex: "[ 02 / VLASTNÍ SESTAVA ]", configTitle: "Postav si NOVA CUSTOM", configLead: "Vyber komponenty. Kompatibilitu a doporučený zdroj hlídáme za tebe.", performance: "Výkon", graphicsCard: "Grafická karta", processor: "AMD procesor", memory: "Operační paměť", storage: "Úložiště", extraHdd: "Přídavný HDD", casePower: "Skříň a napájení", powerSupply: "Zdroj", pcCase: "PC skříň", yourConfig: "[ TVOJE KONFIGURACE ]", estimatedPrice: "Orientační cena včetně DPH", addConfiguration: "Přidat konfiguraci do košíku", configNote: "Nezávazná konfigurace. Finální cenu a dostupnost komponent potvrdíme před objednávkou.",
     supportIndex: "[ PODPORA ]", supportTitle: "Jsme tu,", supportTitleAccent: "když nás potřebuješ.", supportLead: "Poradíme s výběrem, objednávkou i servisem. Napiš nám a ozveme se co nejdřív.", hours: "Po–Pá · 9:00–17:00", faqWarrantyQ: "Jak dlouhá je záruka?", faqWarrantyA: "Na každou sestavu NOVA RIG dostaneš tříletou záruku.", faqShippingQ: "Kdy PC odešlete?", faqShippingA: "Skladové sestavy obvykle odesíláme do 24 hodin po potvrzení objednávky.", faqReadyQ: "Je PC připravené hrát?", faqReadyA: "Ano. Systém i ovladače nastavíme a stabilitu sestavy otestujeme v zátěži.", faqUpgradeQ: "Mohu PC později rozšířit?", faqUpgradeA: "Ano. Pomůžeme ti vybrat kompatibilní RAM, disk, grafiku nebo zdroj.", footerSlogan: "Sestavy, které bychom si sami chtěli nechat.",
   },
@@ -1682,15 +1682,15 @@ const translations = {
     chooseBuild: "Choose a PC", customConfig: "Custom configurator", recommended: "RECOMMENDED", show: "View",
     warranty: "3-year warranty", noWorries: "Worry-free", tested: "Tested for 48 hours", stable: "Stability under load", freeShipping: "Free shipping", wholeCz: "Across Czechia",
     buildsIndex: "[ 01 / COMPUTERS ]", catalogTitle: "Choose your rig", noBuilds: "No PC matches your search.", showAll: "Show all",
-    priceIntelligence: "PRICE INTELLIGENCE", demoData: "SAMPLE DATA", refresh: "Refresh", marketRadar: "HARDWARE MARKET RADAR",
-    trackerTitle: "Find the best-value hardware", trackerLead: "We compare shop and marketplace offers with MSRP so you can instantly see what is really worth it.",
-    exploreOffers: "Explore offers", trackerSearch: "Search GPU, CPU, RAM or SSD…", offers: "offers", shopsBazaar: "shops + marketplaces", lastRefresh: "last refresh",
-    marketNow: "MARKET RIGHT NOW", demo: "DEMO", bestPrice: "BEST PRICE", thirtyDays: "30 DAYS", source: "Source", allOffers: "All offers", eshops: "Online shops", bazaars: "Marketplaces",
+    priceIntelligence: "PRICE INTELLIGENCE", demoData: "CHECKED JUL 18, 2026", refresh: "Refresh", marketRadar: "HARDWARE MARKET RADAR",
+    trackerTitle: "Find the best-value hardware", trackerLead: "We compare shop and marketplace offers with a reference price so you can instantly see what is really worth it.",
+    exploreOffers: "Explore offers", trackerSearch: "Search GPU, CPU, RAM or SSD…", offers: "offers", shopsBazaar: "shops + marketplaces", lastRefresh: "price check",
+    marketNow: "MARKET RIGHT NOW", demo: "VERIFIED", bestPrice: "BEST PRICE", thirtyDays: "CURRENT OFFERS", source: "Source", allOffers: "All offers", eshops: "Online shops", bazaars: "Marketplaces",
     sort: "Sort", bestDeal: "Best deal", lowestPrice: "Lowest price", largestDiscount: "Largest discount", noOffers: "No offers match the filters.",
-    whyDemo: "Why are the prices sample data?", demoExplanation: "GitHub Pages is a static website. Real-time prices need a secure pricing API; the tracker is ready to connect and never presents a sample price as live.",
-    justNow: "just now", shop: "Shop", bazaar: "Marketplace", newCondition: "New", usedCondition: "Used", detailOffer: "Offer details", inStock: "In stock", addCart: "Add to cart",
+    whyDemo: "How should these prices be read?", demoExplanation: "These prices are a market snapshot checked on July 18, 2026 on Heureka.cz and Bazoš.cz. This is not an automatic live feed; shops and marketplaces can change prices at any time. A pricing API is required for true live tracking.",
+    justNow: "checked Jul 18, 2026", shop: "Shop", bazaar: "Marketplace", newCondition: "New", usedCondition: "Used", detailOffer: "Offer details", inStock: "In stock", addCart: "Add to cart",
     backBuilds: "Back to computers", completeSpecs: "Full specifications", gamePerformance: "Estimated benchmarks", averageFps: "AVERAGE FPS", idealFor: "IDEAL FOR",
-    exampleSources: "SAMPLE SOURCES", exampleSource: "Sample source", priceVsMsrp: "vs MSRP", fromWord: "from", liveData: "LIVE DATA",
+    exampleSources: "VERIFIED OFFERS", exampleSource: "Another offer", priceVsMsrp: "vs reference price", referencePrice: "REFERENCE PRICE", openSource: "Open source", fromWord: "from", liveData: "LIVE DATA",
     configIndex: "[ 02 / CUSTOM PC ]", configTitle: "Build your NOVA CUSTOM", configLead: "Choose the parts. We watch compatibility and the recommended PSU for you.", performance: "Performance", graphicsCard: "Graphics card", processor: "AMD processor", memory: "Memory", storage: "Storage", extraHdd: "Additional HDD", casePower: "Case and power", powerSupply: "Power supply", pcCase: "PC case", yourConfig: "[ YOUR CONFIGURATION ]", estimatedPrice: "Estimated price including VAT", addConfiguration: "Add configuration to cart", configNote: "Non-binding configuration. We will confirm the final price and availability before the order.",
     supportIndex: "[ SUPPORT ]", supportTitle: "We are here,", supportTitleAccent: "when you need us.", supportLead: "We can help with choosing, ordering and service. Send us a message and we will reply as soon as possible.", hours: "Mon–Fri · 9:00–17:00", faqWarrantyQ: "How long is the warranty?", faqWarrantyA: "Every NOVA RIG computer includes a three-year warranty.", faqShippingQ: "When will you ship the PC?", faqShippingA: "In-stock computers are usually dispatched within 24 hours after order confirmation.", faqReadyQ: "Is the PC ready to play?", faqReadyA: "Yes. We configure the system and drivers and stress-test the PC for stability.", faqUpgradeQ: "Can I upgrade it later?", faqUpgradeA: "Yes. We can help you choose compatible RAM, storage, GPU or power supply.", footerSlogan: "Computers we would want to keep ourselves.",
   },
@@ -1702,15 +1702,15 @@ const translations = {
     chooseBuild: "PC auswählen", customConfig: "Eigene Konfiguration", recommended: "EMPFOHLEN", show: "Anzeigen",
     warranty: "3 Jahre Garantie", noWorries: "Sorgenfrei", tested: "48 Stunden getestet", stable: "Stabil unter Last", freeShipping: "Kostenloser Versand", wholeCz: "In ganz Tschechien",
     buildsIndex: "[ 01 / COMPUTER ]", catalogTitle: "Wähle deinen Rig", noBuilds: "Kein PC passt zur Suche.", showAll: "Alle anzeigen",
-    priceIntelligence: "PREISANALYSE", demoData: "BEISPIELDATEN", refresh: "Aktualisieren", marketRadar: "HARDWARE-MARKTRADAR",
+    priceIntelligence: "PREISANALYSE", demoData: "GEPRÜFT AM 18.07.2026", refresh: "Aktualisieren", marketRadar: "HARDWARE-MARKTRADAR",
     trackerTitle: "Finde Hardware zum besten Preis", trackerLead: "Wir vergleichen Angebote von Shops und Marktplätzen mit der UVP, damit du sofort erkennst, was sich wirklich lohnt.",
-    exploreOffers: "Angebote ansehen", trackerSearch: "GPU, CPU, RAM oder SSD suchen…", offers: "Angebote", shopsBazaar: "Shops + Marktplätze", lastRefresh: "letzte Aktualisierung",
-    marketNow: "MARKT IM MOMENT", demo: "DEMO", bestPrice: "BESTPREIS", thirtyDays: "30 TAGE", source: "Quelle", allOffers: "Alle Angebote", eshops: "Online-Shops", bazaars: "Marktplätze",
+    exploreOffers: "Angebote ansehen", trackerSearch: "GPU, CPU, RAM oder SSD suchen…", offers: "Angebote", shopsBazaar: "Shops + Marktplätze", lastRefresh: "Preisprüfung",
+    marketNow: "MARKT IM MOMENT", demo: "GEPRÜFT", bestPrice: "BESTPREIS", thirtyDays: "AKTUELLE ANGEBOTE", source: "Quelle", allOffers: "Alle Angebote", eshops: "Online-Shops", bazaars: "Marktplätze",
     sort: "Sortierung", bestDeal: "Bestes Angebot", lowestPrice: "Niedrigster Preis", largestDiscount: "Größter Rabatt", noOffers: "Keine Angebote entsprechen den Filtern.",
-    whyDemo: "Warum sind die Preise Beispieldaten?", demoExplanation: "GitHub Pages ist eine statische Website. Echte Live-Preise brauchen eine sichere Preis-API; der Tracker ist dafür vorbereitet und zeigt Beispieldaten niemals als live an.",
-    justNow: "gerade eben", shop: "Shop", bazaar: "Marktplatz", newCondition: "Neu", usedCondition: "Gebraucht", detailOffer: "Angebotsdetails", inStock: "Auf Lager", addCart: "In den Warenkorb",
+    whyDemo: "Wie sind diese Preise zu verstehen?", demoExplanation: "Die Preise sind eine am 18.07.2026 auf Heureka.cz und Bazoš.cz geprüfte Marktaufnahme. Es handelt sich nicht um einen automatischen Live-Feed; Shops und Marktplätze können Preise jederzeit ändern. Für echtes Live-Tracking ist eine Preis-API erforderlich.",
+    justNow: "geprüft am 18.07.2026", shop: "Shop", bazaar: "Marktplatz", newCondition: "Neu", usedCondition: "Gebraucht", detailOffer: "Angebotsdetails", inStock: "Auf Lager", addCart: "In den Warenkorb",
     backBuilds: "Zurück zu Computern", completeSpecs: "Vollständige Daten", gamePerformance: "Geschätzte Benchmarks", averageFps: "DURCHSCHNITTLICHE FPS", idealFor: "IDEAL FÜR",
-    exampleSources: "BEISPIELQUELLEN", exampleSource: "Beispielquelle", priceVsMsrp: "gegen UVP", fromWord: "ab", liveData: "LIVE-DATEN",
+    exampleSources: "GEPRÜFTE ANGEBOTE", exampleSource: "Weiteres Angebot", priceVsMsrp: "zum Referenzpreis", referencePrice: "REFERENZPREIS", openSource: "Quelle öffnen", fromWord: "ab", liveData: "LIVE-DATEN",
     configIndex: "[ 02 / EIGENER PC ]", configTitle: "Baue deinen NOVA CUSTOM", configLead: "Wähle die Komponenten. Wir prüfen Kompatibilität und das empfohlene Netzteil.", performance: "Leistung", graphicsCard: "Grafikkarte", processor: "AMD-Prozessor", memory: "Arbeitsspeicher", storage: "Speicher", extraHdd: "Zusätzliche HDD", casePower: "Gehäuse und Strom", powerSupply: "Netzteil", pcCase: "PC-Gehäuse", yourConfig: "[ DEINE KONFIGURATION ]", estimatedPrice: "Richtpreis inklusive MwSt.", addConfiguration: "Konfiguration in den Warenkorb", configNote: "Unverbindliche Konfiguration. Endpreis und Verfügbarkeit bestätigen wir vor der Bestellung.",
     supportIndex: "[ SUPPORT ]", supportTitle: "Wir sind da,", supportTitleAccent: "wenn du uns brauchst.", supportLead: "Wir helfen bei Auswahl, Bestellung und Service. Schreib uns und wir antworten so schnell wie möglich.", hours: "Mo–Fr · 9:00–17:00", faqWarrantyQ: "Wie lange gilt die Garantie?", faqWarrantyA: "Auf jeden NOVA RIG Computer erhältst du drei Jahre Garantie.", faqShippingQ: "Wann wird der PC versendet?", faqShippingA: "Lagernde Computer versenden wir gewöhnlich innerhalb von 24 Stunden nach Bestätigung.", faqReadyQ: "Ist der PC spielbereit?", faqReadyA: "Ja. Wir richten System und Treiber ein und testen den PC unter Last.", faqUpgradeQ: "Kann ich ihn später erweitern?", faqUpgradeA: "Ja. Wir helfen bei kompatiblem RAM, Speicher, Grafikkarte oder Netzteil.", footerSlogan: "Computer, die wir selbst behalten würden.",
   },
@@ -1738,30 +1738,30 @@ const money = {
 };
 
 let trackerOffers = [
-  { id:"g1", category:"gpu", name:"GeForce RTX 5070 12GB", price:16490, msrp:18990, sourceType:"shop", shop:"TechMarket.cz", condition:"new", score:98, history:[18190,17890,17990,17490,16990,16790,16490] },
-  { id:"g2", category:"gpu", name:"GeForce RTX 4070 12GB", price:9490, msrp:16990, sourceType:"bazaar", shop:"GameBazar", condition:"used", score:96, history:[10990,10500,10490,9990,9790,9690,9490] },
-  { id:"g3", category:"gpu", name:"GeForce RTX 5060 8GB", price:8790, msrp:9990, sourceType:"shop", shop:"PixelStore.cz", condition:"new", score:91, history:[9490,9290,9190,8990,8990,8890,8790] },
-  { id:"g4", category:"gpu", name:"Radeon RX 9070 XT 16GB", price:17990, msrp:19990, sourceType:"shop", shop:"Hardware Point", condition:"new", score:89, history:[18990,18790,18490,18690,18190,17990,17990] },
-  { id:"g5", category:"gpu", name:"GeForce RTX 5080 16GB", price:31990, msrp:34990, sourceType:"shop", shop:"PC Arena", condition:"new", score:87, history:[33990,33490,32990,32490,32690,32190,31990] },
-  { id:"g6", category:"gpu", name:"GeForce RTX 4060 8GB", price:6290, msrp:8990, sourceType:"bazaar", shop:"Komponenty Bazar", condition:"used", score:90, history:[6990,6890,6690,6490,6490,6390,6290] },
-  { id:"c1", category:"cpu", name:"AMD Ryzen 7 9800X3D", price:12990, msrp:12490, sourceType:"shop", shop:"TechMarket.cz", condition:"new", score:80, history:[12490,12490,12690,12590,12790,12990,12990] },
-  { id:"c2", category:"cpu", name:"AMD Ryzen 7 7800X3D", price:9990, msrp:10990, sourceType:"shop", shop:"PC Arena", condition:"new", score:94, history:[10790,10690,10490,10290,10190,9990,9990] },
-  { id:"c3", category:"cpu", name:"AMD Ryzen 5 7600", price:4690, msrp:5490, sourceType:"shop", shop:"PixelStore.cz", condition:"new", score:92, history:[5190,5090,4990,4890,4790,4790,4690] },
-  { id:"c4", category:"cpu", name:"AMD Ryzen 7 9700X", price:7990, msrp:9490, sourceType:"shop", shop:"Hardware Point", condition:"new", score:91, history:[8990,8790,8690,8490,8290,8190,7990] },
-  { id:"c5", category:"cpu", name:"AMD Ryzen 7 5700X3D", price:4890, msrp:6490, sourceType:"bazaar", shop:"GameBazar", condition:"used", score:93, history:[5590,5490,5290,5190,5090,4990,4890] },
-  { id:"c6", category:"cpu", name:"AMD Ryzen 9 9950X3D", price:17990, msrp:19990, sourceType:"shop", shop:"PC Arena", condition:"new", score:86, history:[19490,19290,18990,18790,18490,18190,17990] },
-  { id:"r1", category:"ram", name:"Kingston Fury 32GB DDR5-6000", price:2399, msrp:2890, sourceType:"shop", shop:"Memory Lab", condition:"new", score:97, history:[2790,2690,2590,2590,2490,2399,2399] },
-  { id:"r2", category:"ram", name:"Corsair 64GB DDR5-6000", price:4490, msrp:5290, sourceType:"shop", shop:"TechMarket.cz", condition:"new", score:91, history:[4990,4890,4790,4690,4590,4490,4490] },
-  { id:"r3", category:"ram", name:"32GB DDR4-3600 CL16", price:1490, msrp:1990, sourceType:"shop", shop:"PixelStore.cz", condition:"new", score:95, history:[1790,1690,1690,1590,1590,1490,1490] },
-  { id:"r4", category:"ram", name:"G.Skill 32GB DDR5-6400", price:2690, msrp:3190, sourceType:"shop", shop:"Hardware Point", condition:"new", score:90, history:[2990,2990,2890,2790,2790,2690,2690] },
-  { id:"r5", category:"ram", name:"64GB DDR5-5600 Kit", price:3490, msrp:4990, sourceType:"bazaar", shop:"Komponenty Bazar", condition:"used", score:89, history:[3990,3890,3790,3690,3590,3590,3490] },
-  { id:"r6", category:"ram", name:"16GB DDR5-6000 Kit", price:1190, msrp:1490, sourceType:"shop", shop:"PC Arena", condition:"new", score:88, history:[1390,1390,1290,1290,1250,1190,1190] },
-  { id:"s1", category:"ssd", name:"Samsung 990 EVO Plus 2TB", price:3190, msrp:3990, sourceType:"shop", shop:"Storage Hub", condition:"new", score:96, history:[3790,3690,3590,3490,3390,3290,3190] },
-  { id:"s2", category:"ssd", name:"WD Black SN850X 1TB", price:1890, msrp:2390, sourceType:"shop", shop:"TechMarket.cz", condition:"new", score:94, history:[2190,2190,2090,1990,1990,1890,1890] },
-  { id:"s3", category:"ssd", name:"Crucial P3 Plus 2TB", price:2490, msrp:3190, sourceType:"shop", shop:"PixelStore.cz", condition:"new", score:93, history:[2890,2790,2790,2690,2590,2490,2490] },
-  { id:"s4", category:"ssd", name:"Kingston NV3 1TB", price:1390, msrp:1790, sourceType:"shop", shop:"Hardware Point", condition:"new", score:92, history:[1690,1590,1590,1490,1490,1390,1390] },
-  { id:"s5", category:"ssd", name:"Samsung 980 PRO 2TB", price:2190, msrp:3490, sourceType:"bazaar", shop:"GameBazar", condition:"used", score:86, history:[2690,2590,2490,2390,2290,2190,2190] },
-  { id:"s6", category:"ssd", name:"Lexar NM790 4TB", price:5790, msrp:6990, sourceType:"shop", shop:"Storage Hub", condition:"new", score:88, history:[6590,6390,6290,6190,5990,5890,5790] },
+  { id:"g1", category:"gpu", name:"MSI GeForce RTX 5070 Ventus 2X OC 12GB", price:14620, msrp:18990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://graficke-karty.heureka.cz/msi-geforce-rtx-5070-12g-ventus-2x-oc/", condition:"new", score:98, comparisons:[14620,15390,16541], history:[17230,17036,16872,16666,16541,15390,14620] },
+  { id:"g2", category:"gpu", name:"GeForce RTX 4070 12GB", price:11000, msrp:16990, sourceType:"bazaar", shop:"Bazoš.cz", sourceUrl:"https://elektro.bazos.cz/inzeraty/rtx-4070/", condition:"used", score:94, comparisons:[11000,12500], history:[13500,12900,12500,11900,11500,11200,11000] },
+  { id:"g3", category:"gpu", name:"Gigabyte GeForce RTX 5060 8GB", price:7949, msrp:9990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://graficke-karty.heureka.cz/f%3A2642%3A85424106/", condition:"new", score:96, comparisons:[7949,8810,9310], history:[9310,9190,8990,8810,8490,8190,7949] },
+  { id:"g4", category:"gpu", name:"ASRock Radeon RX 9070 XT Challenger 16GB", price:16190, msrp:19990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://graficke-karty.heureka.cz/f%3A2642%3A82902041/", condition:"new", score:97, comparisons:[16190,16490,16802], history:[18999,18578,17896,16802,16490,16743,16190] },
+  { id:"g5", category:"gpu", name:"Gigabyte GeForce RTX 5080 Windforce OC 16GB", price:28680, msrp:34990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://graficke-karty.heureka.cz/f%3A2642%3A81551318/", condition:"new", score:95, comparisons:[28680,29901,30990], history:[33047,32399,30990,30690,29901,29290,28680] },
+  { id:"g6", category:"gpu", name:"Gigabyte GeForce RTX 4060 Eagle OC 8GB", price:10084, msrp:11990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://graficke-karty.heureka.cz/gigabyte-gv-n4060eagle-oc-8gd/", condition:"new", score:88, comparisons:[10084], history:[11990,11690,11290,10990,10690,10290,10084] },
+  { id:"c1", category:"cpu", name:"AMD Ryzen 7 9800X3D", price:9390, msrp:12490, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://procesory.heureka.cz/amd-ryzen-7-9800x3d-100-100001084wof/", condition:"new", score:98, comparisons:[9390,9870,10390], history:[11140,10988,10838,10720,10390,9870,9390] },
+  { id:"c2", category:"cpu", name:"AMD Ryzen 7 7800X3D", price:7208, msrp:10990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://procesory.heureka.cz/amd-ryzen-7-7800x3d-100-100000910/", condition:"new", score:99, comparisons:[7208,7255,7986], history:[9990,9490,8990,8490,7986,7255,7208] },
+  { id:"c3", category:"cpu", name:"AMD Ryzen 5 7600 BOX", price:4184, msrp:5490, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://procesory.heureka.cz/amd-ryzen-5-7600-100-100001015box/", condition:"new", score:96, comparisons:[4184,4272,4290], history:[4880,4690,4490,4398,4290,4272,4184] },
+  { id:"c4", category:"cpu", name:"AMD Ryzen 7 9700X", price:6087, msrp:9490, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://procesory.heureka.cz/amd-ryzen-7-9700x-100-100001404wof/", condition:"new", score:98, comparisons:[6087,6990,7090], history:[7990,7690,7297,7217,7090,6990,6087] },
+  { id:"c5", category:"cpu", name:"AMD Ryzen 7 5700X3D", price:7900, msrp:8990, sourceType:"bazaar", shop:"Bazoš.cz", sourceUrl:"https://pc.bazos.cz/inzeraty/5700-x3d/", condition:"used", score:82, comparisons:[7900], history:[8990,8790,8590,8390,8190,7990,7900] },
+  { id:"c6", category:"cpu", name:"AMD Ryzen 9 9950X3D", price:14790, msrp:19990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://procesory.heureka.cz/amd-ryzen-9-9950x3d-100-100000719wof/", condition:"new", score:95, comparisons:[14790,14990,15338], history:[16590,15993,15747,15627,15338,14990,14790] },
+  { id:"r1", category:"ram", name:"Kingston Fury Beast 32GB DDR5-6000 CL30", price:10990, msrp:13990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://pameti.heureka.cz/kingston-fury-beast-expo-ddr5-32gb-6000mhz-cl30-2x16gb-kf560c30bbek2-32/", condition:"new", score:97, comparisons:[10990,11990,12290], history:[12887,12850,12739,12644,12501,11990,10990] },
+  { id:"r2", category:"ram", name:"Corsair Vengeance 64GB DDR5-6000 CL40", price:29297, msrp:34990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://pameti.heureka.cz/corsair-vengeance-ddr5-64gb-6000mhz-cl40-2x32gb-cmh64gx5m2b6000z40/", condition:"new", score:90, comparisons:[29297,30363], history:[33990,32990,31990,30990,30363,29990,29297] },
+  { id:"r3", category:"ram", name:"G.Skill Ripjaws V 32GB DDR4-3600 CL16", price:6094, msrp:7490, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://pameti.heureka.cz/f%3A2528%3A3248634%3B2632%3A32-/", condition:"new", score:92, comparisons:[6094], history:[7190,6990,6790,6590,6390,6190,6094] },
+  { id:"r4", category:"ram", name:"Corsair Vengeance 32GB DDR5-6000 CL36", price:9990, msrp:12490, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://pameti.heureka.cz/corsair-ddr5-32gb-6000mhz-cl36-cmk32gx5m2e6000z36w/", condition:"new", score:95, comparisons:[9990,10354], history:[11990,11490,10990,10690,10354,10190,9990] },
+  { id:"r5", category:"ram", name:"Kingston Fury 64GB DDR5-5600 CL40", price:10999, msrp:19990, sourceType:"bazaar", shop:"Bazoš.cz", sourceUrl:"https://pc.bazos.cz/inzeraty/ddr5-2x32gb/", condition:"used", score:98, comparisons:[10999,14990,15999], history:[18000,17000,15999,14990,14000,11900,10999] },
+  { id:"r6", category:"ram", name:"Kingston Fury 16GB DDR5-6000 CL30", price:5004, msrp:5990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://pameti.heureka.cz/f%3A2528%3A42209236%3B2632%3A16-16/", condition:"new", score:89, comparisons:[5004,5983], history:[5983,5790,5590,5490,5290,5190,5004] },
+  { id:"s1", category:"ssd", name:"Samsung 990 EVO Plus 2TB", price:6199, msrp:7990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://pevne-disky.heureka.cz/samsung-990-evo-plus-2tb-mz-v9s2t0bw/", condition:"new", score:97, comparisons:[6199,6504,6757], history:[7511,7432,7190,6990,6757,6504,6199] },
+  { id:"s2", category:"ssd", name:"WD Black SN850X 1TB", price:4790, msrp:5990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://pevne-disky.heureka.cz/wd-black-sn850x-1tb-wds100t2x0e/", condition:"new", score:95, comparisons:[4790,4829,5293], history:[5676,5646,5317,5293,4838,4829,4790] },
+  { id:"s3", category:"ssd", name:"Crucial P3 Plus 2TB", price:7395, msrp:8990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://pevne-disky.heureka.cz/crucial-p3-plus-2tb-ct2000p3pssd8/", condition:"new", score:86, comparisons:[7395,11374], history:[11374,10990,9990,9290,8490,7790,7395] },
+  { id:"s4", category:"ssd", name:"Kingston NV3 1TB", price:3390, msrp:3990, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://pevne-disky.heureka.cz/kingston-nv3-1tb-snv3s-1000g/", condition:"new", score:91, comparisons:[3390,3691], history:[3990,3890,3790,3691,3590,3490,3390] },
+  { id:"s5", category:"ssd", name:"Samsung 980 PRO 2TB", price:3999, msrp:7990, sourceType:"bazaar", shop:"Bazoš.cz", sourceUrl:"https://pc.bazos.cz/inzeraty/samsung-980-pro/", condition:"used", score:96, comparisons:[3999], history:[5990,5490,4990,4590,4290,4090,3999] },
+  { id:"s6", category:"ssd", name:"Lexar NM790 4TB", price:10430, msrp:12490, sourceType:"shop", shop:"Heureka.cz", sourceUrl:"https://pevne-disky.heureka.cz/lexar-nm790-4tb-lnm790x004t-rnnng/", condition:"new", score:90, comparisons:[10430], history:[12490,11990,11690,11290,10990,10690,10430] },
 ];
 
 const PRICE_API_ENDPOINT = "";
@@ -2020,11 +2020,7 @@ function openTrackerModal(id) {
   const offer = trackerOffers.find((item) => item.id === id);
   if (!offer) return;
   const percent = offerPercent(offer);
-  const sampleSources = [
-    [offer.shop, offer.price],
-    [`${t("exampleSource")} 2`, Math.round(offer.price * 1.035)],
-    [`${t("exampleSource")} 3`, Math.round(offer.price * .975)],
-  ];
+  const comparedPrices = Array.isArray(offer.comparisons) && offer.comparisons.length ? offer.comparisons : [offer.price];
   trackerModalContent.innerHTML = `
     <div class="tracker-modal-hero">
       <div class="tracker-modal-visual sprite-${offer.category}"></div>
@@ -2032,12 +2028,12 @@ function openTrackerModal(id) {
         <p>${offer.category.toUpperCase()} · ${t(offer.sourceType)}</p>
         <h2 id="tracker-modal-title">${escapeHtml(offer.name)}</h2>
         <span>${t(offer.condition === "used" ? "usedCondition" : "newCondition")} · ${escapeHtml(offer.shop)} · ${t("demo")}</span>
-        <div class="tracker-modal-price"><div><strong>${money.format(offer.price)}</strong><span>${percent > 0 ? "+" : ""}${percent} % ${t("priceVsMsrp")}</span></div><span>MSRP<br>${money.format(offer.msrp)}</span></div>
+        <div class="tracker-modal-price"><div><strong>${money.format(offer.price)}</strong><span>${percent > 0 ? "+" : ""}${percent} % ${t("priceVsMsrp")}</span></div><span>${t("referencePrice")}<br>${money.format(offer.msrp)}</span></div>
       </div>
     </div>
     <div class="tracker-sources">
       <p>${t("exampleSources")}</p>
-      ${sampleSources.map(([source, price]) => `<div class="tracker-source-row"><strong>${escapeHtml(source)}</strong><span>${money.format(price)}</span><em>${t("demo")}</em></div>`).join("")}
+      ${comparedPrices.map((price, index) => `<div class="tracker-source-row"><strong>${escapeHtml(index === 0 ? offer.shop : `${offer.shop} · ${index + 1}`)}</strong><span>${money.format(price)}</span><a href="${escapeHtml(offer.sourceUrl)}" target="_blank" rel="noopener noreferrer">${t("openSource")} ↗</a></div>`).join("")}
     </div>`;
   trackerModalLayer.hidden = false;
   document.body.classList.add("drawer-visible");
